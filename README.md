@@ -84,4 +84,40 @@ Generative models are a class of machine learning models designed to generate ne
 ## Introduction
 Generative AI represents a groundbreaking advancement in artificial intelligence, characterized by its ability to create new and original content. Unlike traditional AI, which primarily analyzes and processes existing data, generative AI models are designed to produce new data that mimics the patterns and structures found in their training sets.
 
+# DEMO
 
+1. [Information 1](#info1)
+2. [Link to Information 2](#info2)
+
+---
+
+<div id="info1" style="display: none;">
+
+## Information 1
+
+This is the detailed information for Link 1.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget elit sit amet justo consectetur fringilla. Ut fermentum sollicitudin odio, id interdum ipsum vestibulum nec.
+
+</div>
+
+<div id="info2" style="display: none;">
+
+## Information 2
+
+This is the detailed information for Link 2.
+
+Sed dignissim, mauris vel eleifend fermentum, ipsum mi tincidunt nunc, eget consectetur nisl metus vel justo.
+
+</div>
+
+<script>
+function showInfo(id) {
+    var element = document.getElementById(id);
+    if (element.style.display === "none") {
+        element.style.display = "block";
+    } else {
+        element.style.display = "none";
+    }
+}
+</script>
