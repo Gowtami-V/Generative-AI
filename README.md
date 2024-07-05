@@ -86,14 +86,23 @@ Generative AI represents a groundbreaking advancement in artificial intelligence
 
 # DEMO
 
-## Introduction [Click Here](#introduction)
+[<span style="color: blue;">Introduction</span>](javascript:void(0);)
 
 **Content of your Introduction**
+<!DOCTYPE html>
+<html>
+<body>
+  <h2 id="introduction" style="color: blue; cursor: pointer;">Introduction</h2>
+  <div id="intro-content">
+    </div>
+  <script>
+    document.getElementById("introduction").addEventListener("click", function() {
+      var introContent = document.getElementById("intro-content");
+      introContent.style.display = introContent.style.display === "block" ? "none" : "block";
+    });
+  </script>
+</body>
+</html>
 
-<a name="introduction"></a> 
-
-<details>
-  <summary>Introduction</summary>
-  **Content of your Introduction**
-</details>
+[Introduction](intro.html)
 
