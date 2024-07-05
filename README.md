@@ -86,45 +86,14 @@ Generative AI represents a groundbreaking advancement in artificial intelligence
 
 # DEMO
 
-# Interactive Links to Display Text
+## Introduction [Click Here](#introduction)
 
-1. [Link to Information 1](#info1)
-2. [Link to Information 2](#info2)
+**Content of your Introduction**
 
----
+<a name="introduction"></a> 
 
-## Interactive Content
+<details>
+  <summary>Introduction</summary>
+  **Content of your Introduction**
+</details>
 
-### Information 1
-@hidden
-This is the detailed information for Link 1.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget elit sit amet justo consectetur fringilla. Ut fermentum sollicitudin odio, id interdum ipsum vestibulum nec.
-
-### Information 2
-@hidden
-This is the detailed information for Link 2.
-
-Sed dignissim, mauris vel eleifend fermentum, ipsum mi tincidunt nunc, eget consectetur nisl metus vel justo.
-
-@reveal
-1. [Link to Information 1](#info1): Reveal Information 1
-    - [Click to reveal Information 1](#info1)
-2. [Link to Information 2](#info2): Reveal Information 2
-    - [Click to reveal Information 2](#info2)
-
----
-
-## Information
-
-### <span id="info1">Information 1</span>
-@hidden
-This is the detailed information for Link 1.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget elit sit amet justo consectetur fringilla. Ut fermentum sollicitudin odio, id interdum ipsum vestibulum nec.
-
-### <span id="info2">Information 2</span>
-@hidden
-This is the detailed information for Link 2.
-
-Sed dignissim, mauris vel eleifend fermentum, ipsum mi tincidunt nunc, eget consectetur nisl metus vel justo.
