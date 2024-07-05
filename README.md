@@ -51,4 +51,25 @@ Generative AI has a wide array of applications across various industries, transf
     * **Tutoring Systems:** Generating personalized lesson plans and feedback for students.<br>
     * **Content Creation:** Creating educational materials, including interactive simulations and quizzes.<br>
 
+
+## Introduction to Generative Models
+
+Generative models are a class of machine learning models designed to generate new data samples from the same distribution as the training data. They are widely used in various applications such as image synthesis, text generation, and more. Here’s a brief introduction to generative models:
+
+**Types of Generative Models**
+
+1. ~~**Generative Adversarial Networks (GANs):**~~
+
+    * **Components:** Consist of two neural networks, a generator and a discriminator, which are trained simultaneously.<br>
+    * **Function:** The generator creates fake data samples, and the discriminator evaluates their authenticity. The generator improves over time to produce more realistic data.<br>
+    <br>
+2. ~~**Variational Autoencoders (VAEs):**~~
+
+    * **Components:** Encoders and decoders with a latent space representation.<br>
+    * **Function:** Encoders map input data to a latent space, while decoders generate new data from this space. VAEs use a probabilistic approach to ensure the generated data is similar to the input data.<br>
+    <br>
+3. ~~**Autoregressive Models:**~~
+
+    * **Examples:** PixelRNN, PixelCNN, GPT (Generative Pre-trained Transformer).<br>
+    * **Function:** Generate data sequentially, where each data point is conditioned on the previous ones. For instance, in text generation, each word is predicted based on the preceding words.<br>
    
