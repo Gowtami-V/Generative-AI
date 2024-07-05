@@ -56,6 +56,7 @@ Generative AI has a wide array of applications across various industries, transf
 
 Generative models are a class of machine learning models designed to generate new data samples from the same distribution as the training data. They are widely used in various applications such as image synthesis, text generation, and more. Here’s a brief introduction to generative models:
 
+
 **Types of Generative Models**
 
 1. **Generative Adversarial Networks (GANs):**
