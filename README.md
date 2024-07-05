@@ -3,7 +3,7 @@
 ## Introduction
 
 Generative AI represents a groundbreaking advancement in artificial intelligence, characterized by its ability to create new and original content. Unlike traditional AI, which primarily analyzes and processes existing data, generative AI models are designed to produce new data that mimics the patterns and structures found in their training sets. This technology leverages sophisticated algorithms and neural network architectures, such as Generative Adversarial Networks (GANs) and Transformers, to generate text, images, audio, and even video.
-
+<br>
 ## Generative AI Applications
 
 Generative AI has a wide array of applications across various industries, transforming how we create and interact with content. Here are some notable applications:
@@ -20,6 +20,7 @@ Generative AI has a wide array of applications across various industries, transf
     * **Art and Design:** Creating original artwork, design concepts, and fashion items.<br>
     * **Entertainment:** Generating characters, scenes, and special effects for movies and video games.<br>
     * **Advertising:** Creating personalized and visually appealing advertisements.<br>
+
     <br>
 
 3. **Audio Generation**
@@ -51,7 +52,7 @@ Generative AI has a wide array of applications across various industries, transf
     * **Tutoring Systems:** Generating personalized lesson plans and feedback for students.<br>
     * **Content Creation:** Creating educational materials, including interactive simulations and quizzes.<br>
 
-
+<br>
 ## Introduction to Generative Models
 
 Generative models are a class of machine learning models designed to generate new data samples from the same distribution as the training data. They are widely used in various applications such as image synthesis, text generation, and more. Here’s a brief introduction to generative models:
@@ -74,3 +75,13 @@ Generative models are a class of machine learning models designed to generate ne
     * **Examples:** PixelRNN, PixelCNN, GPT (Generative Pre-trained Transformer).<br>
     * **Function:** Generate data sequentially, where each data point is conditioned on the previous ones. For instance, in text generation, each word is predicted based on the preceding words.<br>
    
+
+1. [Introduction](#info1)
+
+
+---
+
+## Introduction
+Generative AI represents a groundbreaking advancement in artificial intelligence, characterized by its ability to create new and original content. Unlike traditional AI, which primarily analyzes and processes existing data, generative AI models are designed to produce new data that mimics the patterns and structures found in their training sets.
+
+
