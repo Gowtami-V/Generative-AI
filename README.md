@@ -104,5 +104,4 @@ Generative AI represents a groundbreaking advancement in artificial intelligence
 </body>
 </html>
 
-[Introduction](intro.html)
 
