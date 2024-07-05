@@ -86,7 +86,7 @@ Generative AI represents a groundbreaking advancement in artificial intelligence
 
 # DEMO
 
-1. [Information 1](#info1)
+1. [Link to Information 1](#info1)
 2. [Link to Information 2](#info2)
 
 ---
@@ -95,7 +95,7 @@ Generative AI represents a groundbreaking advancement in artificial intelligence
 
 ## Information 1
 
-This is the detailed information for Link 1.
+This is the stored paragraph for Link 1.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget elit sit amet justo consectetur fringilla. Ut fermentum sollicitudin odio, id interdum ipsum vestibulum nec.
 
@@ -105,7 +105,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget elit sit am
 
 ## Information 2
 
-This is the detailed information for Link 2.
+This is the stored paragraph for Link 2.
 
 Sed dignissim, mauris vel eleifend fermentum, ipsum mi tincidunt nunc, eget consectetur nisl metus vel justo.
 
@@ -113,11 +113,14 @@ Sed dignissim, mauris vel eleifend fermentum, ipsum mi tincidunt nunc, eget cons
 
 <script>
 function showInfo(id) {
+    // Hide all divs initially
+    var divs = document.querySelectorAll('div[id^="info"]');
+    divs.forEach(function(div) {
+        div.style.display = "none";
+    });
+    
+    // Show the clicked div
     var element = document.getElementById(id);
-    if (element.style.display === "none") {
-        element.style.display = "block";
-    } else {
-        element.style.display = "none";
-    }
+    element.style.display = "block";
 }
 </script>
