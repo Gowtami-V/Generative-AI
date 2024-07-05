@@ -86,50 +86,45 @@ Generative AI represents a groundbreaking advancement in artificial intelligence
 
 # DEMO
 
+# Interactive Links to Display Text
+
 1. [Link to Information 1](#info1)
 2. [Link to Information 2](#info2)
 
 ---
 
-<div id="info1" style="display: none;">
+## Interactive Content
 
-## Information 1
-
-This is the stored paragraph for Link 1.
+### Information 1
+@hidden
+This is the detailed information for Link 1.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget elit sit amet justo consectetur fringilla. Ut fermentum sollicitudin odio, id interdum ipsum vestibulum nec.
 
-</div>
-
-<div id="info2" style="display: none;">
-
-## Information 2
-
-This is the stored paragraph for Link 2.
+### Information 2
+@hidden
+This is the detailed information for Link 2.
 
 Sed dignissim, mauris vel eleifend fermentum, ipsum mi tincidunt nunc, eget consectetur nisl metus vel justo.
 
-</div>
+@reveal
+1. [Link to Information 1](#info1): Reveal Information 1
+    - [Click to reveal Information 1](#info1)
+2. [Link to Information 2](#info2): Reveal Information 2
+    - [Click to reveal Information 2](#info2)
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    var links = document.querySelectorAll("a[href^='#info']");
-    
-    links.forEach(function(link) {
-        link.addEventListener("click", function(event) {
-            event.preventDefault();
-            var targetId = this.getAttribute("href").substring(1);
-            var targetDiv = document.getElementById(targetId);
-            
-            // Hide all divs initially
-            var divs = document.querySelectorAll('div[id^="info"]');
-            divs.forEach(function(div) {
-                div.style.display = "none";
-            });
-            
-            // Show the clicked div
-            targetDiv.style.display = "block";
-        });
-    });
-});
-</script>
+---
+
+## Information
+
+### <span id="info1">Information 1</span>
+@hidden
+This is the detailed information for Link 1.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget elit sit amet justo consectetur fringilla. Ut fermentum sollicitudin odio, id interdum ipsum vestibulum nec.
+
+### <span id="info2">Information 2</span>
+@hidden
+This is the detailed information for Link 2.
+
+Sed dignissim, mauris vel eleifend fermentum, ipsum mi tincidunt nunc, eget consectetur nisl metus vel justo.
