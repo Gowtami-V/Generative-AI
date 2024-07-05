@@ -112,15 +112,24 @@ Sed dignissim, mauris vel eleifend fermentum, ipsum mi tincidunt nunc, eget cons
 </div>
 
 <script>
-function showInfo(id) {
-    // Hide all divs initially
-    var divs = document.querySelectorAll('div[id^="info"]');
-    divs.forEach(function(div) {
-        div.style.display = "none";
-    });
+document.addEventListener("DOMContentLoaded", function() {
+    var links = document.querySelectorAll("a[href^='#info']");
     
-    // Show the clicked div
-    var element = document.getElementById(id);
-    element.style.display = "block";
-}
+    links.forEach(function(link) {
+        link.addEventListener("click", function(event) {
+            event.preventDefault();
+            var targetId = this.getAttribute("href").substring(1);
+            var targetDiv = document.getElementById(targetId);
+            
+            // Hide all divs initially
+            var divs = document.querySelectorAll('div[id^="info"]');
+            divs.forEach(function(div) {
+                div.style.display = "none";
+            });
+            
+            // Show the clicked div
+            targetDiv.style.display = "block";
+        });
+    });
+});
 </script>
