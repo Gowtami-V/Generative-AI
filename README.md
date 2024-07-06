@@ -53,6 +53,7 @@ Generative AI has a wide array of applications across various industries, transf
     * **Content Creation:** Creating educational materials, including interactive simulations and quizzes.<br>
 
 <br>
+
 ## Introduction to Generative Models
 
 Generative models are a class of machine learning models designed to generate new data samples from the same distribution as the training data. They are widely used in various applications such as image synthesis, text generation, and more. Here’s a brief introduction to generative models:
@@ -65,43 +66,17 @@ Generative models are a class of machine learning models designed to generate ne
     * **Components:** Consist of two neural networks, a generator and a discriminator, which are trained simultaneously.<br>
     * **Function:** The generator creates fake data samples, and the discriminator evaluates their authenticity. The generator improves over time to produce more realistic data.<br>
     <br>
+
 2. **Variational Autoencoders (VAEs):**
 
     * **Components:** Encoders and decoders with a latent space representation.<br>
     * **Function:** Encoders map input data to a latent space, while decoders generate new data from this space. VAEs use a probabilistic approach to ensure the generated data is similar to the input data.<br>
     <br>
+
 3. **Autoregressive Models:**
 
     * **Examples:** PixelRNN, PixelCNN, GPT (Generative Pre-trained Transformer).<br>
     * **Function:** Generate data sequentially, where each data point is conditioned on the previous ones. For instance, in text generation, each word is predicted based on the preceding words.<br>
    
-
-1. [Introduction](#info1)
-
-
----
-
-## Introduction
-Generative AI represents a groundbreaking advancement in artificial intelligence, characterized by its ability to create new and original content. Unlike traditional AI, which primarily analyzes and processes existing data, generative AI models are designed to produce new data that mimics the patterns and structures found in their training sets.
-
-# DEMO
-
-[<span style="color: blue;">Introduction</span>](javascript:void(0);)
-
-**Content of your Introduction**
-<!DOCTYPE html>
-<html>
-<body>
-  <h2 id="introduction" style="color: blue; cursor: pointer;">Introduction</h2>
-  <div id="intro-content">
-    </div>
-  <script>
-    document.getElementById("introduction").addEventListener("click", function() {
-      var introContent = document.getElementById("intro-content");
-      introContent.style.display = introContent.style.display === "block" ? "none" : "block";
-    });
-  </script>
-</body>
-</html>
 
 
