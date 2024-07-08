@@ -152,9 +152,9 @@
 
 * [When and how to recalibrate,re-train,re-build models](#Models)
 
-    - [Recalibrate](#Recalibrate)
+    - [Recalibrate](#Recalibration)
 
-    - [Re-train](#Re-Train)
+    - [Re-train](#Re-Training)
 
     - [Re-building](#Re-Building)
 
