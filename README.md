@@ -112,7 +112,7 @@
 
 * [Working with Data loaders - Ingesting documents](Data_Loaders)
 
-* [Working with text splitters - Chunking Data](#text_splitters)
+* [Working with text splitters - Chunking Data](#Text_Splitters)
 
 * [Working with chains](#Working_with(Chains))
 
@@ -122,25 +122,25 @@
 
     - [Summarization](#Summarization)
 
-    - [API](#API)
+    - [API](#API_Instructions)
 
 * [Working with Memrory](#Working_with-Memory)
 
 * [Working with Embedding](#Working_with-Embedding)
 
-    - [Clustering](#clustering)
+    - [Clustering](#Clustering)
 
     - [Text Classification](#Text_Classification)
 
 * [Hugging Face](#Hugging_Face)
 
-* [Model Library of Hugging Face](#model_library)
+* [Model Library of Hugging Face](#Model_Library)
 
-* [Identifying & choosing the Right LLM Models](#identifying-choosing(LLMs))
+* [Identifying & choosing the Right LLM Models](#Identifying-choosing(LLMs))
 
-* [Understanding the Model Metrics, Accuracy and other Benchmarks](#evaluation_metrics)
+* [Understanding the Model Metrics, Accuracy and other Benchmarks](#Evaluation_Metrics)
 
-* [Hugging Face Datasets](#hugging_face-datasets)
+* [Hugging Face Datasets](#Hugging_Face-Datasets)
 
 * [Code Documentations in Hugging face](#Code_Documentations)
 
@@ -154,13 +154,13 @@
 
     - [Recalibrate](#Recalibrate)
 
-    - [Re-train](#Re-train)
+    - [Re-train](#Re-Train)
 
-    - [Re-building](#Re-building)
+    - [Re-building](#Re-Building)
 
 * [When should I re-train the model](#Re-train(Model))
 
-* [Model Retraining Options like PEFT, LORA](#model_Retraining)
+* [Model Retraining Options like PEFT, LORA](#Model_Retraining)
 
     - [PEFT](#PEFT)
 
@@ -173,6 +173,7 @@
 * [What next in the AI world](#AI_world)
 
 * [Conclusion](#Conclusion)
+<br>
 <br>
 
 ## Introduction
@@ -239,20 +240,24 @@ Generative models are a class of machine learning models designed to generate ne
 
 1. **Generative Adversarial Networks (GANs):**
 
-    * **Components:** Consist of two neural networks, a generator and a discriminator, which are trained simultaneously.<br>
-    * **Function:** The generator creates fake data samples, and the discriminator evaluates their authenticity. The generator improves over time to produce more realistic data.<br>
+    * **Components:** Consist of two neural networks, a generator and a discriminator, which are trained simultaneously.
+
+    * **Function:** The generator creates fake data samples, and the discriminator evaluates their authenticity. The generator improves over time to produce more realistic data.
     <br>
 
 2. **Variational Autoencoders (VAEs):**
 
-    * **Components:** Encoders and decoders with a latent space representation.<br>
-    * **Function:** Encoders map input data to a latent space, while decoders generate new data from this space. VAEs use a probabilistic approach to ensure the generated data is similar to the input data.<br>
+    * **Components:** Encoders and decoders with a latent space representation.
+
+    * **Function:** Encoders map input data to a latent space, while decoders generate new data from this space. VAEs use a probabilistic approach to ensure the generated data is similar to the input data.
     <br>
 
 3. **Autoregressive Models:**
 
-    * **Examples:** PixelRNN, PixelCNN, GPT (Generative Pre-trained Transformer).<br>
-    * **Function:** Generate data sequentially, where each data point is conditioned on the previous ones. For instance, in text generation, each word is predicted based on the preceding words.<br>
+    * **Examples:** PixelRNN, PixelCNN, GPT (Generative Pre-trained Transformer).
+
+    * **Function:** Generate data sequentially, where each data point is conditioned on the previous ones. For instance, in text generation, each word is predicted based on the preceding words.
+<br>
 <br>   
 
 ## Deep_Learning
@@ -261,7 +266,7 @@ Generative models are a class of machine learning models designed to generate ne
 
 Deep learning has revolutionized generative modeling by harnessing the power of neural networks to create complex and realistic data distributions. Variational Autoencoders (VAEs) and Generative Adversarial Networks (GANs) are two prominent examples. VAEs use an encoder-decoder architecture to learn latent representations of data, enabling generation of new samples. GANs, on the other hand, pit a generator against a discriminator in a game-theoretic framework where the generator learns to produce increasingly realistic samples by fooling the discriminator, which itself improves at distinguishing real from generated data. These models have found applications in diverse fields such as image and text generation, offering capabilities from generating lifelike images to creating natural language text. Despite their successes, challenges like mode collapse and ethical implications regarding generated content remain areas of active research and debate in the field of deep generative models.
 
-Here's how deep learning fuels generative models, along with some cool examples:<br>
+Here's how deep learning fuels generative models, along with some cool examples:
 
 1. **Unveiling the Secrets:** Learning the Data's Language.
 
@@ -362,11 +367,43 @@ Transformer is a neural network architecture that can process sequential data su
 ![alt text](imagee1.png)
 
 The transformer architecture is split into two distinct parts, the encoder and the decoder. These components work in conjunction with each other and they share a number of similarities. Also, note here, the diagram you see is derived from the original attention is all you need paper. Notice how the inputs to the model are at the bottom and the outputs are at the top.
+
+![alt text](A.png)
+
+In essence, this process transforms words into numbers, where each number corresponds to a specific position in a dictionary containing all the potential words the model can handle. There are various tokenization methods available. For instance, some token IDs may represent two entire words.
+
+![alt text](B.png)
+
+Once your input is converted into numbers, it can be fed into the embedding layer. This layer is a trainable vector embedding space, a high-dimensional area where each token is represented by a vector and occupies a unique position within that space. Every token ID in the vocabulary is associated with a multi-dimensional vector. 
+
+![alt text](G.png)
+
+The idea is that these vectors learn to capture the meaning and context of individual tokens in the input sequence. Referring back to the example sequence, you can observe that each word has been assigned a token ID, and each token is translated into a vector. In the original transformer paper, the vector size was actually 512, which is too large to fit into this image.
+
+![alt text](C.png)
+
+When you integrate token vectors into the encoder or decoder base, you also incorporate positional encoding. The model processes all input tokens in parallel. By including positional encoding, you preserve the word order information, ensuring the positional relevance of words within the sentence is maintained. Once the input tokens and positional encodings are combined, the resulting vectors are passed to the self-attention layer.
+
+![alt text](D.png)
+
+In this stage, the model examines the relationships between tokens in your input sequence. As previously discussed, this enables the model to focus on different parts of the input sequence, effectively capturing the contextual dependencies between words. The self-attention weights, learned during training and stored in these layers, indicate the significance of each word in the input sequence relative to all other words.
+
+However, this process occurs multiple times through the transformer's multi-headed self-attention mechanism. This means that several sets of self-attention weights, or heads, are learned in parallel, each independently from the others. The number of attention heads in the attention layer varies depending on the model, typically ranging from 12 to 100. The idea is that each self-attention head will learn to recognize different aspects of the language.
+
+![alt text](E.png)
+
+For instance, one head might identify relationships between the people entities in a sentence, while another head might focus on the activities described. Yet another head could concentrate on different properties, such as whether the words rhyme. It's important to understand that you don't predetermine which aspects of language each attention head will learn. The weights for each head start with random initialization, and with enough training data and time, each head will learn different language aspects. While some attention maps are straightforward to interpret, like the examples given here, others might be more complex.
+
+![alt text](F.png)
+
+After all the attention weights have been applied to your input data, the output is processed through a fully-connected feed-forward network. This layer's output is a vector of logits, with each value representing a proportional probability score for every token in the tokenizer dictionary. These logits can then be passed to a final softmax layer, where they are normalized into probability scores for each word. The output includes a probability for every word in the vocabulary, which means there will likely be thousands of scores. One token will have a higher score than the rest, indicating it is the most likely predicted token. However, as you'll learn later in the course, there are various methods to modify the final selection from this vector of probabilities.
+
 <br>
 <br>
 
 ## LLMs
 
+![alt text](H.png)
 Large Language Models (LLMs) represent a cutting-edge advancement in generative artificial intelligence, leveraging deep learning techniques to understand and generate human-like text. These models, such as GPT (Generative Pre-trained Transformer), are built on Transformer architectures that excel in capturing long-range dependencies in data. LLMs are trained on vast amounts of text data, enabling them to generate coherent and contextually relevant text in response to prompts or cues provided by users. Their ability to understand and produce language with fluency and coherence has enabled applications across various domains, including natural language understanding, dialogue systems, content generation, and more. However, alongside their remarkable capabilities, LLMs also raise ethical considerations related to biases in training data, potential misuse, and the societal impact of generated content. As research continues to advance, LLMs promise to further enhance our interactions with AI by pushing the boundaries of what machines can understand and express in natural language.
 
 Imagine a computer program that has been trained on a massive amount of text data – like the entire internet! This data includes books, articles, code, and all sorts of online content. LLMs use this knowledge to understand the patterns and nuances of language.
@@ -637,16 +674,17 @@ Imagine giving vague instructions to a friend. The results might be unpredictabl
 
 **Key Strategies for Effective Prompt Engineering**
 
-* Clarity is King: Use concise and well-structured language. The AI should understand the prompt without any confusion.
+* **Clarity is King:** Use concise and well-structured language. The AI should understand the prompt without any confusion.
 
-* Provide Context: Give the AI background information relevant to the task. This helps it understand the situation and generate a more relevant response.
+* **Provide Context:** Give the AI background information relevant to the task. This helps it understand the situation and generate a more relevant response.
 
-* Set the Tone: Indicate the desired style or formality of the output. Do you want a casual email, a persuasive argument, or a humorous story?
+* **Set the Tone:** Indicate the desired style or formality of the output. Do you want a casual email, a persuasive argument, or a humorous story?
 
-* Examples are Powerful: Provide examples of the kind of output you expect. This gives the AI a reference point and improves the accuracy of its response.
+* **Examples are Powerful:** Provide examples of the kind of output you expect. This gives the AI a reference point and improves the accuracy of its response.
 
-* Iteration is Key: Don't be afraid to experiment and refine your prompts. Test different approaches and see how the AI responds.
-
+* **Iteration is Key:** Don't be afraid to experiment and refine your prompts. Test different approaches and see how the AI responds.
+<br>
+<br>
 
 ## Introduction-to-Chatgpt
 
@@ -670,14 +708,15 @@ While the inner workings of complex AI models are often not public knowledge, he
 
 ![alt text](image-23.png)
 
-* User Input: This is what you provide, like questions, conversation prompts, or instructions for creative text generation.
+* **User Input:** This is what you provide, like questions, conversation prompts, or instructions for creative text generation.
 
-* Information Access: ChatGPT can access and process massive amounts of information from various sources.
+* **Information Access:** ChatGPT can access and process massive amounts of information from various sources.
 
-* Conversational Response: Based on your input and processed information, ChatGPT formulates informative or casual conversation responses.
+* **Conversational Response:** Based on your input and processed information, ChatGPT formulates informative or casual conversation responses.
 
-* Creative Text Output: When prompted, ChatGPT can generate different creative text formats like poems, code, or scripts.
-
+* **Creative Text Output:** When prompted, ChatGPT can generate different creative text formats like poems, code, or scripts.
+<br>
+<br>
 
 ## Designing-a-prompt
 
@@ -686,48 +725,50 @@ While the inner workings of complex AI models are often not public knowledge, he
 Imagine you're a movie director instructing your actors. The clearer your directions, the better the performance. Similarly, crafting effective prompts for AI models like ChatGPT is crucial for achieving the desired outcome. 
 Here's a breakdown of the process with helpful visuals:
 
-1.  **Define Your Goal:**
+1.  **Define Your Goal**
 
     *  What do you want the AI model to generate? Is it a poem, a news report, a code snippet, or something else entirely?
 
     * Having a clear goal will guide your prompt structure and content.
+    <br>
 
-2. **Understand the AI Model's Capabilities:**
+2. **Understand the AI Model's Capabilities**
 
-    *  Different AI models have varying strengths and weaknesses. Familiarize yourself with the model's capabilities to ensure your prompt aligns with what it can do.
+    *   Different AI models have varying strengths and weaknesses. Familiarize yourself with the model's capabilities to ensure your prompt aligns with what it can do.
 
     *  Knowing the model's limitations can help you adjust your expectations and avoid frustration.
 
-3. **Gather Information and Context:**
+3. **Gather Information and Context**
 
-    * What background information or context is relevant to your goal? Providing relevant details helps the AI understand the situation and generate a more accurate response. 
+    *   What background information or context is relevant to your goal? Providing relevant details helps the AI understand the situation and generate a more accurate response. 
 
     *  This could include specific details, keywords, or references related to your desired output.
 
-4. **Craft the Prompt:**
+4. **Craft the Prompt**
 
-    *  Clarity is King: Use concise and well-structured language. The AI should understand the prompt without any confusion.
+    *  **Clarity is King:** Use concise and well-structured language. The AI should understand the prompt without any confusion.
 
-    *  Set the Tone: Indicate the desired style or formality of the output. Do you want a casual email, a persuasive argument, or a humorous story?
+    *  **Set the Tone:** Indicate the desired style or formality of the output. Do you want a casual email, a persuasive argument, or a humorous story?
 
-    *  Provide Instructions: Clearly state what you want the AI to do with the information you provided.
+    *  **Provide Instructions:** Clearly state what you want the AI to do with the information you provided.
 
-    * Examples are Powerful: Include examples of the kind of output you expect if possible. This gives the AI a reference point for generating the desired response.
+    * **Examples are Powerful:** Include examples of the kind of output you expect if possible. This gives the AI a reference point for generating the desired response.
 
 **Here's an example to illustrate the process**
 
- **Goal:** Generate a short, funny poem about a cat who loves to play with yarn.
+**Goal:** Generate a short, funny poem about a cat who loves to play with yarn.
 
 **Prompt:**
 Write a humorous poem in the style of Shel Silverstein about a mischievous cat who becomes obsessed with a ball of yarn.
 
-![alt text](imagee3.png) "The text that you feed into the model is called the prompt, the act of generating text is known as inference, and the output text is known as the completion. The full amount of text or the memory that is available to use for the prompt is called the context window. Although the example here shows the model performing well, you'll frequently encounter situations where the model doesn't produce the outcome that you want on the first try. You may have to revise the language in your prompt or the way that it's written several times to get the model to behave in the way that you want. This work to develop and improve the prompt is known as prompt engineering." 
+![alt text](imagee3.png) The text that you feed into the model is called the prompt, the act of generating text is known as inference, and the output text is known as the completion. The full amount of text or the memory that is available to use for the prompt is called the context window. Although the example here shows the model performing well, you'll frequently encounter situations where the model doesn't produce the outcome that you want on the first try. You may have to revise the language in your prompt or the way that it's written several times to get the model to behave in the way that you want. This work to develop and improve the prompt is known as prompt engineering.
 <br>
 
-5. **Refine and Iterate:**
+5. **Refine and Iterate**
 
 Don't be afraid to experiment and refine your prompts. Test different approaches and see how the AI responds. The first attempt might not be perfect, so be prepared to adjust based on the results.
-
+<br>
+<br>
 
 ## Prompt_injection
 
@@ -750,13 +791,13 @@ This is a user input.
 Summarize the user input.
 </SYSTEM_INSTRUCTION>
 ```
-
+<br>
 
 2. **Sanitizing User Inputs**
 
 Sanitize user inputs by escaping special characters or by using specific tokens to indicate the start and end of user content. This prevents the user from including text that could be interpreted as instructions to the model.
 
-Example:
+**Example**
 
 ```plaintext
 <USER_INPUT>
@@ -769,7 +810,7 @@ END_USER_TEXT
 Summarize the text enclosed between BEGIN_USER_TEXT and END_USER_TEXT.
 </SYSTEM_INSTRUCTION>
 ```
-
+<br>
 
 3. **Explicit Instruction Parsing**
 
@@ -795,13 +836,13 @@ try:
 except ValueError as e:
     print(e)
 ```
-
+<br>
 
 4. **Encapsulation**
 
 Encapsulate user inputs and instructions in well-defined data structures, such as JSON objects, to ensure clarity and avoid ambiguity.
 
-**Exampl**
+**Example**
 
 ```json
 {
@@ -809,7 +850,7 @@ Encapsulate user inputs and instructions in well-defined data structures, such a
   "system_instruction": "Summarize the user input."
 }
 ```
-
+<br>
 
 5. **Limiting Instruction Scope**
 
@@ -826,7 +867,7 @@ This is a user input.
 Summarize the user input.
 ---SYSTEM INSTRUCTION END---
 ```
-
+<br>
 
 6. **Contextual Awareness**
 
@@ -843,7 +884,7 @@ This is a user input.
 Summarize the user input.
 [/SYSTEM]
 ```
-
+<br>
 
 7. **Using Strong Contextual Prompts**
 
@@ -859,8 +900,8 @@ Assistant: "I will summarize the user's input."
 
 Summary:
 ```
-
-
+<br>
+<br>
 
 ## Defining_constraints
 
@@ -873,6 +914,7 @@ Defining constraints in the context of machine learning and natural language pro
 - **Data Privacy**: Implement measures to protect sensitive information in the dataset, ensuring compliance with data protection regulations such as GDPR or CCPA.
 
 - **Imbalanced Data**: Address class imbalances in the dataset to avoid biased predictions, potentially using techniques like resampling, SMOTE, or adjusting class weights.
+<br>
 
 **2. Model Constraints**
 
@@ -881,6 +923,7 @@ Defining constraints in the context of machine learning and natural language pro
 - **Complexity**: Limit the complexity of the model to avoid overfitting and ensure it generalizes well to new, unseen data.
 
 - **Interpretability**: Choose models that are interpretable and explainable, particularly in applications where understanding the model's decision-making process is crucial.
+<br>
 
 **3. Computational Constraints**
 
@@ -889,21 +932,25 @@ Defining constraints in the context of machine learning and natural language pro
 - **Inference Speed**: Ensure the model can make predictions within an acceptable time frame, critical for real-time applications.
 
 - **Resource Usage**: Monitor and limit the use of computational resources (CPU, GPU, memory) to ensure the system remains responsive and cost-effective.
+<br>
 
 4. **Deployment Constraints**
+
 - **Environment**: Consider the deployment environment (cloud, on-premise, edge devices) and ensure the model is compatible with the target infrastructure.
 
 - **Scalability**: Design the system to handle varying loads, ensuring it can scale up or down based on demand.
 
 - **Robustness**: Ensure the model can handle unexpected inputs and edge cases gracefully, maintaining stability and reliability.
+<br>
 
 5. **Ethical and Regulatory Constraints**
+
 - **Bias and Fairness**: Implement measures to detect and mitigate bias in the model to ensure fair treatment of all user groups.
 
 - **Compliance**: Ensure the model complies with relevant regulations and standards in the industry, such as healthcare, finance, or automotive standards.
 
 - **Transparency**: Maintain transparency in the model's development and deployment processes, including clear documentation and disclosure of potential risks.
-
+<br>
 
 6. **Performance Metrics Constraints**
 
@@ -917,31 +964,35 @@ Defining constraints in the context of machine learning and natural language pro
 * **NLP Model for Customer Support**: Constraints might include ensuring the model can handle a predefined number of queries per second, maintaining response times under a certain threshold, and adhering to privacy regulations.
 
 * **Image Recognition Model on Mobile Devices**: Constraints could involve limiting the model size to fit within the device's memory, optimizing for low power consumption, and ensuring real-time processing capabilities.
-
+<br>
+<br>
 
 ## Zero-shot_Prompting
 
 Zero-shot prompting refers to the technique of designing prompts in such a way that an AI model can perform a task without having been explicitly trained on specific examples of that task. Instead, the model relies on its general understanding and knowledge derived from its training data to generate appropriate responses. This is particularly useful when you need the model to handle tasks for which no specific training examples are available.
 
-![alt text](imagee6.png) "With in-context learning, you can help LLMs learn more about the task being asked by including examples or additional data in the prompt. Here is a concrete example. Within the prompt shown here, you ask the model to classify the sentiment of a review. So whether the review of this movie is positive or negative, the prompt consists of the instruction, "Classify this review," followed by some context, which in this case is the review text itself, and an instruction to produce the sentiment at the end. This method, including your input data within the prompt, is called zero-shot inference. The largest of the LLMs are surprisingly good at this, grasping the task to be completed and returning a good answer. In this example, the model correctly identifies the sentiment as positive."
+![alt text](imagee6.png) With in-context learning, you can help LLMs learn more about the task being asked by including examples or additional data in the prompt. Here is a concrete example. Within the prompt shown here, you ask the model to classify the sentiment of a review. So whether the review of this movie is positive or negative, the prompt consists of the instruction, "Classify this review," followed by some context, which in this case is the review text itself, and an instruction to produce the sentiment at the end. This method, including your input data within the prompt, is called zero-shot inference. The largest of the LLMs are surprisingly good at this, grasping the task to be completed and returning a good answer. In this example, the model correctly identifies the sentiment as positive.
 
-![alt text](imagee4.png) "Smaller models, on the other hand, can struggle with this. Here's an example of a completion generated by GPT-2, an earlier smaller version of the model that powers ChatGPT. As you can see, the model doesn't follow the instruction. While it does generate text with some relation to the prompt, the model can't figure out the details of the task and does not identify the sentiment."
-
+![alt text](imagee4.png) Smaller models, on the other hand, can struggle with this. Here's an example of a completion generated by GPT-2, an earlier smaller version of the model that powers ChatGPT. As you can see, the model doesn't follow the instruction. While it does generate text with some relation to the prompt, the model can't figure out the details of the task and does not identify the sentiment.
+<br>
+<br>
 
 ## Few-shot_Prompting
 
 Few-shot prompting is a technique used with AI models like ChatGPT to perform tasks with minimal examples or shots of training data. Unlike zero-shot prompting, which requires the model to generalize from its training data without specific examples, few-shot prompting involves providing a small number of examples (shots) to guide the model in understanding and generating responses for a particular task or domain.
 
-![alt text](imagee9.png) "Here you can see that the prompt text is longer and now starts with a completed example that demonstrates the tasks to be carried out to the model. After specifying that the model should classify the review, the prompt text includes a sample review. I loved this movie, followed by a completed sentiment analysis. In this case, the review is positive. Next, the prompt states the instruction again and includes the actual input review that we want the model to analyze. You pass this new longer prompt to the smaller model, which now has a better chance of understanding the task you're specifying and the format of the response that you want. The inclusion of a single example is known as one-shot inference, in contrast to the zero-shot prompt you supplied earlier."
+![alt text](imagee9.png) Here you can see that the prompt text is longer and now starts with a completed example that demonstrates the tasks to be carried out to the model. After specifying that the model should classify the review, the prompt text includes a sample review. I loved this movie, followed by a completed sentiment analysis. In this case, the review is positive. Next, the prompt states the instruction again and includes the actual input review that we want the model to analyze. You pass this new longer prompt to the smaller model, which now has a better chance of understanding the task you're specifying and the format of the response that you want. The inclusion of a single example is known as one-shot inference, in contrast to the zero-shot prompt you supplied earlier.
 
-![alt text](imagee7.png) "Sometimes a single example won't be enough for the model to learn what you want it to do. So you can extend the idea of giving a single example to include multiple examples. This is known as few-shot inference. Here, you're working with an even smaller model that failed to carry out good sentiment analysis with one-shot inference. Instead, you're going to try few-shot inference by including a second example. This time, a negative review, including a mix of examples with different output classes can help the model to understand what it needs to do. You pass the new prompts to the model. And this time it understands the instruction and generates a completion that correctly identifies the sentiment of the review as negative."
-
+![alt text](imagee7.png) "Sometimes a single example won't be enough for the model to learn what you want it to do. So you can extend the idea of giving a single example to include multiple examples. This is known as few-shot inference. Here, you're working with an even smaller model that failed to carry out good sentiment analysis with one-shot inference. Instead, you're going to try few-shot inference by including a second example. This time, a negative review, including a mix of examples with different output classes can help the model to understand what it needs to do. You pass the new prompts to the model. And this time it understands the instruction and generates a completion that correctly identifies the sentiment of the review as negative.
+<br>
+<br>
 
 ## Persona_Prompting
 
 Persona prompting involves guiding an AI model like ChatGPT to generate responses that align with a specific persona or character profile. This technique is useful for creating personalized interactions or content that reflects distinct personalities, which can enhance engagement and relevance in various applications.
 
 Persona prompting is a valuable technique for customizing interactions with AI models to reflect specific personalities or character profiles. By defining clear persona attributes and crafting appropriate prompts, you can guide the model to generate responses that align with the desired persona, enhancing engagement and relevance in various applications such as customer support, storytelling, education, and personal assistance. This approach leverages AI's ability to simulate human-like interactions tailored to specific user needs and preferences.
+<br>
 
 **Key Aspects of Persona Prompting**
 
@@ -969,7 +1020,8 @@ Persona prompting is a valuable technique for customizing interactions with AI m
 * **Prompt with Persona:** Sarah Jones, a veteran science journalist known for her skeptical approach, is investigating a recent breakthrough in renewable energy. Write a news report from Sarah's perspective, highlighting both the potential of the discovery and potential challenges that need further exploration.
 
 In the second prompt, Sarah's skepticism influences the tone and content of the news report.
-
+<br>
+<br>
 
 ## Chain_ofThought
 
@@ -984,8 +1036,9 @@ Chain of Thought (CoT) prompting is a technique used to improve the reasoning an
 
 * Improved Accuracy: Helps the model generate more accurate and logical responses by focusing on each step of the reasoning process.
 
-![alt text](image-25.png) " Chain of Thought prompting is a powerful technique for enhancing the reasoning capabilities and transparency of AI models. By encouraging step-by-step reasoning, this approach helps models generate more accurate and logical responses, making them more reliable and interpretable. This technique is particularly useful for tasks that require complex problem-solving, logical analysis, and detailed explanations."
-
+![alt text](image-25.png) Chain of Thought prompting is a powerful technique for enhancing the reasoning capabilities and transparency of AI models. By encouraging step-by-step reasoning, this approach helps models generate more accurate and logical responses, making them more reliable and interpretable. This technique is particularly useful for tasks that require complex problem-solving, logical analysis, and detailed explanations.
+<br>
+<br>
 
 ## Adversial
 
@@ -1053,14 +1106,16 @@ The training process is a game where the generator aims to fool the discriminato
 * **StyleGAN:** A variant of GANs designed for high-resolution image generation with control over various aspects of the image style.
 
     * **Example:** Generating faces with specific attributes (age, gender, expression).
-
+<br>
+<br>
 
 
 ## Chatbot_Architecture
 
 Designing a chatbot involves creating an architecture that ensures  effective interaction, accurate responses, and a seamless user  experience. The architecture typically includes several key components, each serving a specific purpose. 
 Here’s an overview of the main components and the workflow of a typical chatbot architecture:
-            
+<br>
+
 **Key Components**
 
 1. **User Interface (UI):** The front-end interface through which users interact with the chatbot. This can be a web application, mobile app, messaging platform (e.g., WhatsApp, Facebook Messenger), or a voice assistant.
@@ -1125,6 +1180,9 @@ In the above figure, user messages are given to an intent classification and ent
 * Chatbot’s for news and weather: CNN, Poncho, etc.
 
 The Chabot improves customer services, because of this improvement the benefits of the Chatbot are increasing day by day. In today’s world messaging has become one of the popular means of communication, whether it is a text message or through messaging apps. The Chabot’s are used in different fields for different purposes, because of these different types of businesses are being developed Chabot’s.
+<br>
+<br>
+
 
 ## Langchain 
 
@@ -1188,7 +1246,9 @@ In the LangChain framework, a link accepts input from the user and passes it to 
 
 To use LangChain, developers install the framework in Python with the following command:
 
-*pip install langchain*
+'''python
+!pip install langchain
+'''
 
 Developers then use the chain building blocks or LangChain Expression Language (LCEL) to compose chains with simple programming commands. The chain() function passes a link's arguments to the libraries. The execute() command retrieves the results. Developers can pass the current link result to the following link or return it as the final output. 
 
@@ -1220,7 +1280,8 @@ send_data_to_language_model()
 * **Content Creation:** Generate creative text formats like poems, scripts, or marketing copy using LLMs and LangChain's guidance.
 
 LangChain is a valuable tool for developers who want to harness the power of LLMs to create innovative and intelligent applications.  If you're interested in exploring the world of LLM development, LangChain is definitely worth considering.
-
+<br>
+<br>
 
 ## LangChain_Ecosystem
 
@@ -1262,25 +1323,33 @@ Here's an overview of the key components in the LangChain ecosystem:
 It visually depicts the various components and their interactions. Here’s a breakdown of the key elements:
 
 * **Large Language Models (LLMs):** These are powerful AI models trained on massive amounts of text data. They can generate text, translate languages, write different kinds of creative content, and answer your questions in an informative way.  The diagram shows LLMs at the top because they are the core component that LangChain applications interact with.
+<br>
 
-* **Prompt Engineering & Prompt Chaining:** Prompt engineering refers to the art of crafting the right instructions or questions (prompts) to get the desired results from an LLM. Prompt chaining is the technique of combining multiple prompts together to achieve a complex task. The diagram shows these two concepts near the top because they are essential for guiding the LLM and and and and and shaping its outputs.
+* **Prompt Engineering & Prompt Chaining:** Prompt engineering refers to the art of crafting the right instructions or questions (prompts) to get the desired results from an LLM. Prompt chaining is the technique of combining multiple prompts together to achieve a complex task. The diagram shows these two concepts near the top because they are essential for guiding the LLM and shaping its outputs.
+<br>
 
 * **LangChain Framework:** This is the foundation of the LangChain ecosystem. It provides the core libraries and functionalities for building LLM applications.  The framework is depicted in the center of the image, highlighting its central role.
+<br>
 
 * **Tools:** LangChain offers various tools to aid in development, such as debugging, monitoring, and memory management. These tools are represented on the left side of the diagram.
+<br>
 
 * **Data Connections:** LangChain allows you to incorporate external data sources like databases or documents into the LLM's workflow. This is illustrated by an arrow pointing from a box labeled "Data"  to the LangChain Framework.
+<br>
 
 * **Flowise:** This component is mentioned in the bottom left corner of the image, but its functionality is not explicitly explained in the official LangChain documentation. It likely refers to a specific tool or library within the LangChain ecosystem.
+<br>
 
 * **Autonomous Agents:** LangChain can be used to build stateful, multi-actor applications with LLMs, meaning these applications can learn and adapt over time.  This is represented by the concept of "Autonomous Agents"  in the bottom right corner of the image.
+<br>
 
 * LangSmith and LangGraph are also mentioned in the image but not depicted visually. We discussed these earlier:
 
     * LangSmith is a developer platform that provides functionalities like debugging, testing, evaluating, and monitoring your LLM applications.
 
     * LangGraph is the core framework for building stateful, controllable agents using LLMs.
-
+<br>
+<br>
 
 ## Supported_LLMs
 
@@ -1291,47 +1360,48 @@ LangChain supports a variety of large language models (LLMs) to cater to differe
 1. **GPT-3**: Known for its powerful text generation capabilities, GPT-3 can be used for tasks like content creation, summarization, translation, and conversational AI.
 
 2. **GPT-4**: The latest in the GPT series, offering improved performance, understanding, and generation capabilities compared to its predecessors.
-
+<br>
 
 **Google_Models**
 
 1. **BERT**: Primarily used for tasks that require understanding the context of words in a sentence, such as question answering and text classification.
 
 2. **T5 (Text-to-Text Transfer Transformer)**: Converts all NLP tasks into a text-to-text format, making it highly versatile for tasks like translation, summarization, and more.
-
+<br>
 
 **Microsoft Models**
 
 1. **Turing-NLG**: Known for its large-scale language generation capabilities, suitable for generating human-like text and conversational agents.
 
 2. **DialoGPT**: Fine-tuned for generating conversational responses, making it ideal for building chatbots and interactive applications.
-
+<br>
 
 **Open-Source Models**
 
 1. **GPT-Neo**: An open-source alternative to GPT-3, providing powerful language generation capabilities for those who prefer open-source solutions.
 
 2. **GPT-J**: Another open-source language model known for its balanced performance in various NLP tasks.
-
+<br>
 
 **Hugging Face Models**
 
 1. **Transformers**: LangChain supports integration with the Hugging Face Transformers library, giving access to a wide range of pre-trained models for various NLP tasks.
-
+<br>
 
 **Specialized Models**
 
 1. **BioBERT**: A variant of BERT fine-tuned for biomedical text mining tasks.
 
 2. **SciBERT**: Designed for scientific text, useful in academic and research contexts.
-
+<br>
 
 **Multilingual Models**
 
 1. **mBERT (Multilingual BERT)**: Supports multiple languages, making it suitable for multilingual NLP tasks.
 
 2. **XLM-R (Cross-lingual Language Model - RoBERTa)**: Provides strong cross-lingual understanding and generation capabilities.
-
+<br>
+<br>
 
 ## LangChain_on-Google_Colab
 
@@ -1436,6 +1506,8 @@ print(response)
 3. **Experiment with Other Models**: Try integrating other models supported by LangChain to see which best fits your needs.
 
 By following these steps, you should be able to get started with LangChain on Google Colab and begin exploring the capabilities of language models in your applications.
+<br>
+<br>
 
 ## Prompt_Composition-Templates
 
@@ -1447,10 +1519,14 @@ Prompt composition involves crafting the input text in a way that guides the lan
 Here are some tips for effective prompt composition:
 
 1. **Clarity**: Make the prompt as clear and specific as possible.
-2. **Context**: Provide enough context for the model to understand what you are asking.
-3. **Instructions**: Include explicit instructions if needed, such as the format of the response or any specific details to include.
-4. **Examples**: Sometimes, providing examples can help the model understand the expected output.
 
+2. **Context**: Provide enough context for the model to understand what you are asking.
+
+3. **Instructions**: Include explicit instructions if needed, such as the format of the response or any specific details to include.
+
+4. **Examples**: Sometimes, providing examples can help the model understand the expected output.
+<br>
+<br>
 
 ## Prompt_Templates
 
@@ -1473,6 +1549,7 @@ template = PromptTemplate(
     input_variables=["text"]
 )
 ```
+<br>
 
 **Step 2: Fill the Template**
 
@@ -1486,6 +1563,7 @@ text_to_summarize = "LangChain is a framework for developing applications using 
 prompt = template.format(text=text_to_summarize)
 print(prompt)
 ```
+<br>
 
 **Step 3: Generate the Response**
 
@@ -1501,6 +1579,7 @@ gpt3 = OpenAI(api_key=openai_api_key)
 response = gpt3.generate(prompt)
 print(response)
 ```
+<br>
 
 **Complete Example Code**
 
@@ -1535,16 +1614,20 @@ gpt3 = OpenAI(api_key=openai_api_key)
 response = gpt3.generate(prompt)
 print(response)
 ```
+<br>
 
 **Advanced Template Usage**
 
 * For more advanced usage, LangChain templates can include multiple input variables, conditional logic, and more complex formatting. This allows you to create highly customized and context-aware prompts for different scenarios.
 
 * By leveraging prompt templates, you can ensure consistency in your prompts, reduce the chances of errors, and make it easier to manage complex prompt structures.
+<br>
+<br>
 
 ## Agents-Pipelines(Langchain)
 
 LangChain provides powerful abstractions called Agents and Pipelines to streamline complex workflows involving multiple steps and interactions with language models. Here's an overview of these concepts and how to use them effectively.
+<br>
 
 ## LangChain_Agents
 
@@ -1561,12 +1644,13 @@ Agents in LangChain are designed to handle tasks that involve a series of intera
 
 **Working of the Agents**
 
-![alt text](image-30.png) "The functionality of these agents heavily relies on prompt engineering. Prompt recipes are carefully crafted sets of instructions that shape the agent’s behaviors, knowledge, goals, and persona and embed them in prompts. The agent’s interaction with the outer world is dictated by its user interface, which could vary from command-line, graphical, to conversational interfaces. In the case of fully autonomous agents, prompts are programmatically received from other systems or agents.
+![alt text](image-30.png) The functionality of these agents heavily relies on prompt engineering. Prompt recipes are carefully crafted sets of instructions that shape the agent’s behaviors, knowledge, goals, and persona and embed them in prompts. The agent’s interaction with the outer world is dictated by its user interface, which could vary from command-line, graphical, to conversational interfaces. In the case of fully autonomous agents, prompts are programmatically received from other systems or agents.
 
-Another crucial aspect of their structure is the inclusion of memory, which can be categorized into short-term and long-term. While the former helps the agent be aware of recent actions and conversation histories, the latter works in conjunction with an external database to recall information from the past."
+Another crucial aspect of their structure is the inclusion of memory, which can be categorized into short-term and long-term. While the former helps the agent be aware of recent actions and conversation histories, the latter works in conjunction with an external database to recall information from the past.
 <br>
 
 **Example of Using Agents**
+
 Here’s a simple example of how to create and use an agent in LangChain:
 
 ```python
@@ -1595,6 +1679,8 @@ text_to_summarize = "LangChain is a framework for developing applications using 
 summary = agent.run(text_to_summarize)
 print(summary)
 ```
+<br>
+
 
 ## LangChain_Pipelines
 
@@ -1655,12 +1741,15 @@ text_to_summarize = "LangChain is a framework for developing applications using 
 summary = pipeline.run(text_to_summarize)
 print(summary)
 ```
+<br>
+<br>
 
 ## RAG
 
 **Retrieval Augmented Generation**
 
 Retrieval Augmented Generation (RAG) is a framework that combines the strengths of retrieval-based models and generative models to produce more accurate and contextually relevant responses. The idea is to first retrieve relevant documents or pieces of information from a large corpus and then use this information to generate a response. This approach can significantly enhance the performance of generative models, especially in tasks requiring detailed and factual information.
+<br>
 
 **Key Components of RAG**
 
@@ -1672,6 +1761,7 @@ Retrieval Augmented Generation (RAG) is a framework that combines the strengths 
 **How RAG Works**
 
 ![alt text](imagee11.png)
+
 * **Query:** The input query or prompt is processed.
 
 * **Retrieve:** The retriever searches a corpus to find relevant documents or passages based on the query.
@@ -1679,7 +1769,8 @@ Retrieval Augmented Generation (RAG) is a framework that combines the strengths 
 * **Generate:** The retrieved documents are passed to the generator, which uses them to generate a more accurate and informed response.
 
 **Example:** ![alt text](imagee19.png)
-
+<br>
+<br>
 
 ## Enterprise_Data_Serach
 
@@ -1773,6 +1864,7 @@ query = "What are the main findings in the latest financial report?"
 response = rag_pipeline.run(query)
 print(response)
 ```
+<br>
 
 **Step 6: Integrate with a User Interface**
 
@@ -1868,7 +1960,8 @@ if __name__ == '__main__':
 4. **Performance**: Optimize the retrieval and generation processes for performance, especially with large datasets.
 
 By following these steps, you can build a powerful enterprise data search system using LangChain and LLMs, providing users with the ability to retrieve and generate insights from large and diverse datasets efficiently.
-
+<br>
+<br>
 
 ## Case_Study
 
@@ -2015,7 +2108,8 @@ if __name__ == "__main__":
 4. **Fine-Tuning**: Fine-tune the model on specific datasets to improve performance for specialized tasks.
 
 By following these steps, you can create a simple yet powerful Q&A bot using LangChain and OpenAI. This serves as a foundation that you can build upon to create more sophisticated applications.
-
+<br>
+<br>
 
 ## Langchain-Deep_Dive
 
@@ -2039,7 +2133,7 @@ LangChain is a powerful framework designed for building applications that levera
 5. **Retrievers**: Mechanisms for retrieving relevant documents or data from large corpora.
 
 6. **Memory**: Utilities for maintaining state or context across interactions.
-
+<br>
 
 **Detailed Breakdown of Each Component**
 
@@ -2075,6 +2169,7 @@ template = PromptTemplate(
 prompt = template.format(question="What is LangChain?")
 print(prompt)
 ```
+<br>
 
 **3. Agents**
 
@@ -2135,6 +2230,7 @@ text = "LangChain is a framework for developing applications using language mode
 summary = pipeline.run(text)
 print(summary)
 ```
+<br>
 
 **5. Retrievers**
 
@@ -2168,6 +2264,7 @@ retriever = KeywordRetriever(corpus)
 results = retriever.retrieve("LangChain")
 print(results)
 ```
+<br>
 
 **6. Memory**
 
@@ -2199,7 +2296,8 @@ print(memory.get_context())
 ```
 
 By following this deep dive, you now have a comprehensive understanding of LangChain's components and how to use them to build powerful applications. You can extend this foundation to create more sophisticated systems tailored to specific use cases, such as enterprise data search, context-aware chatbots, and more. LangChain's modular design and rich feature set make it an excellent choice for integrating language models into a wide range of applications.
-
+<br>
+<br>
 
 ## Multiple-LLMs(chains)
 
@@ -2375,6 +2473,8 @@ if __name__ == "__main__":
 3. **Error Handling**: Implement error handling to manage potential issues with different models and steps.
 
 4. **Scalability**: Design the system to scale effectively, considering the computational resources required by each model.
+<br>
+<br>
 
 ## Data_Loaders
 
@@ -2383,6 +2483,7 @@ if __name__ == "__main__":
 Let's dive into working with data loaders for ingesting documents using LangChain. This process is crucial for building applications that require processing and analyzing large volumes of text data, such as information retrieval systems, text summarization tools, and more.
 
 LangChain provides utilities for ingesting and processing documents through data loaders. These components help streamline the process of loading text data from various sources, such as local files, databases, and web scraping, and then using this data in your language model applications.
+<br>
 
 **Steps**
 
@@ -2524,13 +2625,15 @@ print(f"Answer: {answer}")
 <br>
 
 By following these steps, you can effectively use LangChain to ingest and process documents from various sources. This allows you to build powerful applications that leverage large volumes of text data, such as document summarization tools, Q&A systems, and more. The flexibility of LangChain's data loaders makes it easy to integrate different data sources and streamline the processing pipeline.
-
+<br>
+<br>
 
 ## Text_Splitters
 
 **Working with text splitters - Chunking Data**
 
 Working with text splitters and chunking data is an essential step when dealing with large documents or datasets. Text splitting allows you to break down large texts into manageable chunks, making it easier for language models to process and analyze the data. LangChain provides utilities for text splitting, which can be very useful in building efficient data pipelines.
+<br>
 
 **Why Use Text Splitters?**
 
@@ -2678,7 +2781,8 @@ Text chunking can be used by several different applications:
 * **Text Classification:** Breaking down text into chunks allows classifiers to focus on smaller, contextually meaningful units rather than entire documents, which can improve performance.
 
 **Machine Translation:** Translation systems often operate on chunks of text rather than on individual words or whole documents. Chunking can aid in maintaining the coherence of the translated text.
-
+<br>
+<br>
 
 ## Working_with-Chains
 
@@ -2697,7 +2801,7 @@ LangChain's chain architecture enables you to connect multiple components in a s
 
 4. **API Interactions**: Chain together API calls with language models to perform complex tasks.
 <br>
-
+<br>
 
 ## Conversational_Retrieval-QA
 
@@ -2724,6 +2828,7 @@ response = conversational_qa_chain.run(conversation_history, user_question)
 print(response)
 ```
 <br>
+<br>
 
 ## Retrieval-QA
 
@@ -2743,6 +2848,7 @@ query = "Summarize the main points of the documents."
 response = retrieval_qa_chain.run(query)
 print(response)
 ```
+<br>
 <br>
 
 ## Summarization
@@ -2765,6 +2871,7 @@ for i, summary in enumerate(summaries):
     print(f"Summary {i+1}:\n{summary}\n")
 ```
 <br>
+<br>
 
 ## API_Interactions
 
@@ -2785,6 +2892,8 @@ api_chain = APIChain(
 api_response = api_chain.run()
 print(api_response)
 ```
+<br>
+<br>
 
 ## Working_with-Memory
 
@@ -2802,7 +2911,7 @@ Working with memory in LangChain involves managing state across multiple interac
 
 Working with memory in LangChain involves managing state across multiple interactions, which is especially useful in tasks like conversational AI where context from previous interactions needs to be retained. LangChain provides memory modules to help you store and retrieve context efficiently. Let's go through how to use memory in LangChain step by step.
 
-### Why Use Memory?
+**Why Use Memory?**
 
 1. **Context Preservation**: Keep track of conversation history or previous interactions to maintain context.
 2. **State Management**: Store intermediate results or states across different stages of processing.
@@ -2890,12 +2999,15 @@ class CustomMemory(BaseMemory):
 
 custom_memory = CustomMemory()
 ```
+<br>
+<br>
 
 ## Working_with-embeddings
 
 **Working with Embeddings**
 
 Working with embeddings in LangChain allows you to represent text data in a dense vector format, which is useful for various NLP tasks such as document retrieval, clustering, and similarity search. Embeddings can capture the semantic meaning of text, making them powerful for many applications.
+<br>
 
 **Why Use Embeddings?**
 
@@ -2905,7 +3017,7 @@ Working with embeddings in LangChain allows you to represent text data in a dens
 
 * **Dimensionality Reduction:** Represent large text data in a compact format.
 
-**Text Classification:** Use embeddings as features for machine learning models.
+* **Text Classification:** Use embeddings as features for machine learning models.
 
 
 **Why Use Embeddings?**
@@ -2980,6 +3092,8 @@ for i, result in enumerate(search_results):
 * **Text Embedding Models:** LangChain offers an Embeddings class that provides access to various pre-trained embedding models. You can choose the model that best suits the type of text data you're working with.
 
 * **Embedding Document and Queries:** The Embeddings class allows you to generate embeddings for both documents and individual queries (user questions or search terms). This enables you to compare them in the vector space for tasks like semantic search.
+<br>
+<br>
 
 
 ## Clustering
@@ -3002,6 +3116,8 @@ for i in range(num_clusters):
     cluster_docs = [chunks[j] for j in range(len(chunks)) if clusters[j] == i]
     print(f"Cluster {i+1}:\n{cluster_docs}\n")
 ```
+<br>
+<br>
 
 ## Text Classification
 
@@ -3030,7 +3146,7 @@ accuracy = accuracy_score(y_test, y_pred)
 print(f"Accuracy: {accuracy:.2f}")
 ```
 <br>
-
+<br>
 
 ## Hugging_Face 
 
@@ -3066,11 +3182,15 @@ Hugging Face understands the power of collaboration. They've cultivated a large 
 
 While Hugging Face is known for its open-source offerings, they also cater to businesses looking to leverage AI:
 
-* **Model Deployment Tools:**  Hugging Face offers tools to streamline the process of deploying trained models into production environments. This helps companies integrate AI solutions seamlessly into their workflows.
+* **Model Deployment Tools:** Hugging Face offers tools to streamline the process of deploying trained models into production environments. This helps companies integrate AI solutions seamlessly into their workflows.
+
 * **Customizable AI Solutions:** Not all companies have the same needs. Hugging Face provides services to tailor AI models and workflows to address specific business requirements.
+
 * **Support and Training:**  Integrating AI solutions can be complex. Hugging Face offers support and training resources to help companies navigate the process and ensure their AI projects are successful. 
 
 In essence, Hugging Face is a one-stop shop for everything NLP. Their open-source tools and resources democratize AI, making it accessible to a wider audience. The active community fosters collaboration and innovation, while the enterprise products help businesses leverage the power of AI for real-world applications. 
+<br>
+<br>
 
 ## Model_Library
 
@@ -3091,7 +3211,8 @@ Hugging Face hosts a comprehensive model library known as the Model Hub, which o
 6. **Integration with `transformers` Library**: Models from the Model Hub can be seamlessly integrated into NLP pipelines using the `transformers` library. This library provides a unified API for loading models, performing inference, and fine-tuning, which simplifies the development process for NLP applications.
 
 The Model Library of Hugging Face is a valuable resource for anyone working with natural language processing, offering a rich collection of pre-trained models and supporting tools to accelerate research, development, and deployment of NLP applications.
-
+<br>
+<br>
 
 ## Identifying-choosing(LLMs)
 
@@ -3146,6 +3267,8 @@ Choosing the right Language Model (LM) from the Hugging Face Model Hub involves 
 7. **Iterative Testing and Validation**
 
 - **Iterative Testing**: Conduct iterative testing and validation using a subset of your data to refine your choice before full deployment.
+<br>
+<br>
 
 
 ## Evaluation_Matrics
@@ -3175,6 +3298,7 @@ Understanding model metrics like accuracy and other benchmarks is crucial in eva
      \]
    Precision and recall are especially useful when the cost of false positives and false negatives differs.
 <br>
+
 3. **F1 Score**: The F1 score is the harmonic mean of precision and recall, providing a balance between the two metrics. It is calculated as:
 
    \[
@@ -3196,6 +3320,8 @@ Understanding model metrics like accuracy and other benchmarks is crucial in eva
 <br>
 
 These metrics collectively provide insights into different aspects of a model's performance, helping to understand its strengths and weaknesses in various contexts.
+<br>
+<br>
 
 
 ## Hugging_Face-Datasets
@@ -3216,8 +3342,9 @@ Hugging Face Datasets (formerly known as `datasets`) is a powerful library and r
 
 7. **Version Control**: Datasets on Hugging Face can be versioned, allowing users to track changes and maintain reproducibility in experiments.
 
-Overall, Hugging Face Datasets simplifies the process of dataset management and exploration, making it a valuable tool for researchers and developers in the machine learning and NLP communities.
-
+Hugging Face Datasets simplifies the process of dataset management and exploration, making it a valuable tool for researchers and developers in the machine learning and NLP communities.
+<br>
+<br>
 
 ## Code_Documentations
 
@@ -3246,6 +3373,8 @@ Hugging Face provides comprehensive documentation to guide users on effectively 
 7. **Support and Forums**: Users can seek further assistance and engage with the community through forums, where developers and researchers share insights, ask questions, and provide solutions related to Hugging Face libraries.
 
 Hugging Face's documentation is structured to support both beginners and advanced users in effectively leveraging their libraries for machine learning and NLP tasks, fostering a supportive environment for learning and development.
+<br>
+<br>
 
 
 ## Huggingface_Model
@@ -3315,7 +3444,8 @@ Loading and running a Hugging Face model in Google Colab involves several steps 
 9. **Saving and Loading Models**: You can save and load models using `save_pretrained` and `from_pretrained` methods of the model and tokenizer objects.
 
 By following these steps, you can effectively load and run Hugging Face models in Google Colab, leveraging its computing power and ease of use for machine learning tasks.
-
+<br>
+<br>
 
 ## Huggingface_features
 
@@ -3324,41 +3454,53 @@ In addition to the core functionalities of loading and using pre-trained models,
 1. **Custom Models and Pipelines**
 
    - **Custom Models**: Hugging Face allows you to create and train custom models using its Transformers library. You can define your architecture, integrate it with Hugging Face's ecosystem, and leverage their training pipelines.
+
    - **Pipelines**: Hugging Face provides high-level abstractions called pipelines for common NLP tasks such as text generation, named entity recognition (NER), translation, sentiment analysis, etc. These pipelines simplify the process of using pre-trained models for specific tasks.
+<br>
 
 2. **Model Hub and Sharing**
 
    - **Model Hub**: Hugging Face hosts a centralized Model Hub where you can discover, share, and download thousands of pre-trained models and datasets. Models range from basic architectures to state-of-the-art models like BERT, GPT, and more.
+
    - **Model Sharing**: Users can upload their trained models to the Model Hub, facilitating collaboration and knowledge sharing within the community.
+<br>
 
 3. **Tokenizers**:
 
    - **Custom Tokenizers**: Hugging Face's Tokenizers library provides various tokenization methods and allows you to create custom tokenizers tailored to specific datasets or languages. This flexibility is crucial for handling diverse text data.
+<br>
 
 4. **Integration with Other Libraries**
 
    - **Integration with PyTorch and TensorFlow**: Hugging Face Transformers library supports both PyTorch and TensorFlow, allowing users to seamlessly switch between these frameworks based on their preference or project requirements.
+<br>
 
 5. **Training and Fine-tuning**
 
    - **Training Interface**: Hugging Face provides a training interface with utilities for fine-tuning models on custom datasets. This includes tools for data preprocessing, batching, and training loop management.
+
    - **Trainer Class**: The `Trainer` class in Transformers simplifies the training process, providing functionalities for training, evaluation, and saving checkpoints.
+<br>
 
 6. **Model Interpretability**
 
    - **Integrated Tools**: Hugging Face includes tools for model interpretability, such as integrated methods for computing attention scores and visualizing attention weights in transformer models. These tools help understand how models make predictions.
+<br>
 
 7. **Extensions and Libraries**
 
    - **Extensions**: Beyond Transformers, Hugging Face offers additional libraries like Datasets (formerly `datasets`) for managing and accessing datasets efficiently, Tokenizers for handling text tokenization, and Accelerate for distributed training.
+<br>
 
 8. **Community and Support**
 
    - **Community Contributions**: Hugging Face has a vibrant community contributing to its libraries, sharing best practices, tutorials, and solutions to common issues.
+
    - **Support**: Users can seek help and participate in discussions through forums, GitHub repositories, and community events organized by Hugging Face.
 
 These features collectively make Hugging Face a powerful platform for developing, deploying, and sharing NLP models and tools, catering to both beginners and advanced researchers in the field of machine learning and natural language processing.
-
+<br>
+<br>
 
 ## Indutrialize
 
@@ -3420,13 +3562,16 @@ predictions, errors, and operational metrics. Tools like ELK Stack (Elasticsearc
 
 
 Industrializing models and enabling ModelOps involves a combination of tools and practices to ensure models are robust, scalable, and maintainable in production. By following this guide, you can create a reliable pipeline for deploying, monitoring, and maintaining machine learning models.
+<br>
+<br>
 
 ## Models
 
 **When and how to recalibrate,re-train,re-build models**
 
 Recalibrating, re-training, and re-building models are essential processes in model lifecycle management, ensuring that machine learning models remain accurate and effective over time. The need for these actions can arise due to various factors such as changes in data distribution, model performance degradation, or the availability of new data.
-
+<br>
+<br>
 
 ## Recalibration
 
@@ -3443,7 +3588,8 @@ Recalibrating, re-training, and re-building models are essential processes in mo
 * **Comparison:** Compare model predictions with ground truth labels or expected outcomes.
 
 * **Techniques:** Use techniques like recalibration methods (e.g., Platt scaling for probabilistic models) to adjust model outputs without re-training.
-
+<br>
+<br>
 
 ## Re-Training
 
@@ -3454,6 +3600,7 @@ Recalibrating, re-training, and re-building models are essential processes in mo
 * **New Data Availability:** Access to a large amount of new labeled data that can improve model performance.
 
 * **Model Architecture Change:** Updates or improvements in model architecture or algorithms.
+<br>
 <br>
 
 **How:**
@@ -3467,19 +3614,23 @@ Recalibrating, re-training, and re-building models are essential processes in mo
 * **Hyperparameter Tuning:** Optimize hyperparameters through techniques like grid search, random search, or Bayesian optimization.
 
 * **Validation:** Validate the new model using cross-validation or hold-out validation techniques.
-
+<br>
+<br>
 
 ## Re-Building
 
 **When:**
+
 * **Significant Changes in Business Requirements:** Major shifts in business objectives, target audience, or operational environment that require a new model approach.
 
 * **Technological Advancements:** Adoption of new technologies or frameworks that can significantly improve model performance or efficiency.
 
 * **Regulatory or Compliance Changes:** Changes in regulations or compliance requirements that impact model use or data handling.
 <br>
+<br>
 
 **How:**
+
 * **Requirement Analysis:** Assess updated business needs, stakeholder requirements, and technical feasibility.
 
 * **Architecture Design:** Design new model architectures, workflows, or pipelines to meet the revised requirements.
@@ -3489,7 +3640,8 @@ Recalibrating, re-training, and re-building models are essential processes in mo
 * **Testing:** Conduct rigorous testing, including unit tests, integration tests, and performance tests, to validate the new model's functionality.
 
 * **Deployment:** Deploy the rebuilt model using continuous integration and deployment (CI/CD) pipelines, ensuring seamless integration into production environments.
-
+<br>
+<br>
 
 ## Re-train(Model)
 
@@ -3533,13 +3685,16 @@ You should consider re-training your machine learning model under several circum
 
 
 Re-training the machine learning model is essential to maintain its effectiveness and relevance over time. By monitoring performance metrics, staying informed about changes in data and business requirements, and following best practices for model lifecycle management, you can ensure your models continue to deliver accurate and valuable insights in dynamic environments.
-
+<br>
+<br>
 
 ## Model_Retraining
 
 **Model Retraining Options like PEFT, LORA**
 
 When it comes to model retraining strategies, PEFT (Periodic Retraining) and LORA (Low-Rank Adaptation) are two specific approaches that address different aspects of maintaining model performance over time.
+<br>
+<br>
 
 ## PEFT
 
@@ -3557,8 +3712,10 @@ PEFT, or Periodic Retraining, involves retraining machine learning models at reg
   
 * **PEFT** is suitable when:
   - Regular updates are feasible and necessary due to data drift or changing business requirements.
-  - Batch retraining can be managed within acceptable timeframes and resource constraints.
 
+  - Batch retraining can be managed within acceptable timeframes and resource constraints.
+<br>
+<br>
 
 ## LORA
 
@@ -3576,8 +3733,10 @@ LORA, or Low-Rank Adaptation, focuses on updating models efficiently by adapting
 
 * **LORA** is suitable when:
   - Efficiency and scalability are critical, especially for large-scale models.
-  - Incremental updates are preferred to avoid the computational cost of retraining from scratch.
 
+  - Incremental updates are preferred to avoid the computational cost of retraining from scratch.
+<br>
+<br>
 
 ## Fine_Tuning(PEFT)
 
@@ -3585,7 +3744,7 @@ LORA, or Low-Rank Adaptation, focuses on updating models efficiently by adapting
 
 Performing fine-tuning of a Large Language Model (LLM) using PEFT (Periodic Retraining) involves updating the model on a regular schedule to incorporate new data and adapt to evolving patterns.
 
-![alt text](image-31.png) "In the realm of code generation with Large Language Models (LLMs), optimizing performance while minimizing computational burden is paramount. Enter Parameter-Efficient Fine-Tuning (PEFT), a set of techniques designed to streamline the fine-tuning process and maximize model efficiency. Through rigorous experimentation and comparison with In-Context Learning (ICL), PEFT has emerged as a superior approach, demonstrating remarkable performance gains with significantly fewer parameters."
+![alt text](image-31.png) In the realm of code generation with Large Language Models (LLMs), optimizing performance while minimizing computational burden is paramount. Enter Parameter-Efficient Fine-Tuning (PEFT), a set of techniques designed to streamline the fine-tuning process and maximize model efficiency. Through rigorous experimentation and comparison with In-Context Learning (ICL), PEFT has emerged as a superior approach,demonstrating remarkable performance gains with significantly fewer parameters.
 
 Performing fine-tuning of a Large Language Model (LLM) using PEFT (Periodic Retraining) involves updating the model on a regular schedule to incorporate new data and adapt to evolving patterns. Here’s a step-by-step guide on how to approach fine-tuning using PEFT:
 
@@ -3636,7 +3795,7 @@ PEFT involves periodically retraining the LLM to ensure it remains effective ove
   
     * **Fine-tuning:** Fine-tune the LLM on the new data while retaining the weights learned during the initial training phase. This process updates the model to adapt to new patterns without starting from scratch.
 
-* Fine-Tuning Example
+* **Fine-Tuning Example**
 
 Here’s an example using Hugging Face's Transformers library to fine-tune a pre-trained GPT-2 model on new data:
 
@@ -3706,7 +3865,8 @@ trainer.train()
 
 
 By implementing PEFT for fine-tuning your Large Language Model, you can continuously adapt the model to new data and improve its performance over time, ensuring it remains effective in real-world applications.
-
+<br>
+<br>
 
 ## Small_LMs
 
@@ -3768,7 +3928,8 @@ When building and deploying small language models, consider the following:
 - **Fine-tuning and Optimization:** Fine-tune the model on relevant tasks and optimize hyperparameters to balance performance and resource efficiency.
 
 - **Deployment Strategy:** Deploy small models using lightweight frameworks suitable for different deployment environments, including edge devices, mobile apps, or cloud-based services.
-
+<br>
+<br>
 
 ## AI_world
 
@@ -3787,9 +3948,9 @@ The future of AI promises several exciting advancements and trends that are like
 
 2. **AI in Healthcare**
 
-![alt text](image-34.png) "AI for healthcare offers the ability to process and analyze vast amounts of medical data far beyond human capacity. This capability was instrumental in diagnosing diseases, predicting outcomes, and recommending treatments. For instance, AI algorithms can analyze medical images, such as X-rays and MRIs, with greater accuracy and speed than human radiologists, often detecting diseases such as cancer at earlier stages.
+![alt text](image-34.png) AI for healthcare offers the ability to process and analyze vast amounts of medical data far beyond human capacity. This capability was instrumental in diagnosing diseases, predicting outcomes, and recommending treatments. For instance, AI algorithms can analyze medical images, such as X-rays and MRIs, with greater accuracy and speed than human radiologists, often detecting diseases such as cancer at earlier stages.
 
-Examples of artificial intelligence in healthcare are diverse and impactful. A significant development besides IBM’s Watson Health was Google's DeepMind Health project, which demonstrated the ability to diagnose eye diseases from retinal scans with a level of accuracy comparable to human experts. These pioneering projects showcased AI's potential to revolutionize diagnostics and personalized medicine."
+Examples of artificial intelligence in healthcare are diverse and impactful. A significant development besides IBM’s Watson Health was Google's DeepMind Health project, which demonstrated the ability to diagnose eye diseases from retinal scans with a level of accuracy comparable to human experts. These pioneering projects showcased AI's potential to revolutionize diagnostics and personalized medicine.
 
 - **Medical Diagnosis and Treatment:** Continued advancements in AI-driven diagnostic tools, personalized medicine, and drug discovery to enhance healthcare outcomes.
   
@@ -3798,7 +3959,7 @@ Examples of artificial intelligence in healthcare are diverse and impactful. A s
 
 3. **AI in Autonomous Systems**
 
-![alt text](image-35.png) "Current technologies in use for automated vehicles are in the very early stages of launch. Innovations using AI can:
+![alt text](image-35.png) Current technologies in use for automated vehicles are in the very early stages of launch. Innovations using AI can:
 
 * Enhance these systems further helping them differentiate road signs in variable weather conditions.
 
@@ -3806,7 +3967,7 @@ Examples of artificial intelligence in healthcare are diverse and impactful. A s
 
 * Deal with accidents and other road hazards in a safe manner.
 
-In fact, expanding on the individual vehicular autonomous system, future transport systems could be fully automated, helping coordinate and dispatch vehicles across a whole city. Autonomous systems can, in fact, be used across a gamut of industries and verticals, and their only limitation is our own imagination. The use of AI and autonomous systems go far beyond what has already been explored. While vehicular autonomous systems can be significantly enhanced to provide even greater safety and security, this is not the only benefit of AI and autonomous systems."
+In fact, expanding on the individual vehicular autonomous system, future transport systems could be fully automated, helping coordinate and dispatch vehicles across a whole city. Autonomous systems can, in fact, be used across a gamut of industries and verticals, and their only limitation is our own imagination. The use of AI and autonomous systems go far beyond what has already been explored. While vehicular autonomous systems can be significantly enhanced to provide even greater safety and security, this is not the only benefit of AI and autonomous systems.
 
 - **Autonomous Vehicles:** Progress in autonomous driving technologies leveraging AI for enhanced safety, efficiency, and adoption in mainstream transportation.
   
@@ -3815,9 +3976,9 @@ In fact, expanding on the individual vehicular autonomous system, future transpo
 
 4. **Natural Language Processing (NLP)**
 
-![alt text](image-42.png) "Artificial intelligence (AI) has a subfield called Natural Language Processing (NLP) that focuses on how computers and human language interact. It makes it possible for machines to effectively comprehend, translate, and create human language. The use of natural language processing (NLP) has revolutionized how we interact with technology by enabling robots to comprehend and respond to our instructions and inquiries.
+![alt text](image-42.png) Artificial intelligence (AI) has a subfield called Natural Language Processing (NLP) that focuses on how computers and human language interact. It makes it possible for machines to effectively comprehend, translate, and create human language. The use of natural language processing (NLP) has revolutionized how we interact with technology by enabling robots to comprehend and respond to our instructions and inquiries.
 
-An interdisciplinary field called "natural language processing" incorporates methods from computer science, linguistics, and artificial intelligence. It entails the creation of models and algorithms that can process and comprehend human language in all of its manifestations, including spoken language, written text, and even gestures. NLP covers a wide range of activities, including text summarization, sentiment analysis, language translation, and sentiment analysis."
+An interdisciplinary field called "natural language processing" incorporates methods from computer science, linguistics, and artificial intelligence. It entails the creation of models and algorithms that can process and comprehend human language in all of its manifestations, including spoken language, written text, and even gestures. NLP covers a wide range of activities, including text summarization, sentiment analysis, language translation, and sentiment analysis.
 
 - **Conversational AI:** Improvements in chatbots, virtual assistants, and customer service applications powered by NLP and dialogue systems.
   
@@ -3833,9 +3994,9 @@ An interdisciplinary field called "natural language processing" incorporates met
 
 6. **AI in Finance and Business**
 
-![alt text](image-36.png) "Artificial intelligence (AI) in finance helps drive insights for data analytics, performance measurement, predictions and forecasting, real-time calculations, customer servicing, intelligent data retrieval, and more. It is a set of technologies that enables financial services organizations to better understand markets and customers, analyze and learn from digital journeys, and engage in a way that mimics human intelligence and interactions at scale."
+![alt text](image-36.png) Artificial intelligence (AI) in finance helps drive insights for data analytics, performance measurement, predictions and forecasting, real-time calculations, customer servicing, intelligent data retrieval, and more. It is a set of technologies that enables financial services organizations to better understand markets and customers, analyze and learn from digital journeys, and engage in a way that mimics human intelligence and interactions at scale.
 
-![alt text](image-37.png) "Artificial intelligence, or the development of computer systems and machine learning to mimic the problem-solving and decision-making capabilities of human intelligence, impacts an array of business processes. Organizations use artificial intelligence (AI) to strengthen data analysis and decision-making, improve customer experiences, generate content, optimize IT operations, sales, marketing and cybersecurity practices, and more. As AI technologies improve and evolve, new business applications emerge."
+![alt text](image-37.png) Artificial intelligence, or the development of computer systems and machine learning to mimic the problem-solving and decision-making capabilities of human intelligence, impacts an array of business processes. Organizations use artificial intelligence (AI) to strengthen data analysis and decision-making, improve customer experiences, generate content, optimize IT operations, sales, marketing and cybersecurity practices, and more. As AI technologies improve and evolve, new business applications emerge.
 
 - **Predictive Analytics:** Use of AI for financial forecasting, risk management, fraud detection, and investment strategies.
   
@@ -3853,7 +4014,7 @@ An interdisciplinary field called "natural language processing" incorporates met
 
 8. **AI Hardware and Edge Computing**
 
-![alt text](image-38.png) "Edge AI is the combination of edge computing and edge intelligence to run machine learning tasks directly on end devices. It generally consists of an in-built microprocessor and sensors, while the data processing task is completed locally and stored at the edge node end. The implementation of machine learning models in edge AI will decrease the latency rate and improve the network bandwidth."
+![alt text](image-38.png) Edge AI is the combination of edge computing and edge intelligence to run machine learning tasks directly on end devices. It generally consists of an in-built microprocessor and sensors, while the data processing task is completed locally and stored at the edge node end. The implementation of machine learning models in edge AI will decrease the latency rate and improve the network bandwidth.
 
 - **AI Accelerators:** Development of specialized hardware accelerators (e.g., GPUs, TPUs) and edge computing solutions to support AI inference and training tasks.
   
@@ -3862,7 +4023,7 @@ An interdisciplinary field called "natural language processing" incorporates met
 
 9. **AI Governance and Collaboration**
 
-![alt text](image-40.png) "AI governance is the foundation of this business transformation, as it ensures that businesses deploy AI technologies responsibly and ethically. It involves developing a framework with principles, guidelines, technology controls, and regulations that address issues such as fairness, accountability, transparency, and privacy. By implementing AI governance, you can create a more trustworthy and inclusive CX environment, fostering customer loyalty and enhancing your brand reputation."
+![alt text](image-40.png) AI governance is the foundation of this business transformation, as it ensures that businesses deploy AI technologies responsibly and ethically. It involves developing a framework with principles, guidelines, technology controls, and regulations that address issues such as fairness, accountability, transparency, and privacy. By implementing AI governance, you can create a more trustworthy and inclusive CX environment, fostering customer loyalty and enhancing your brand reputation.
 
 - **Global Collaboration:** International collaborations and partnerships to advance AI research, share best practices, and address global challenges.
   
@@ -3871,16 +4032,17 @@ An interdisciplinary field called "natural language processing" incorporates met
 
 10. **Human-AI Collaboration**
 
-![alt text](image-41.png) "In recent years, there has been a significant shift in the way humans and artificial intelligence (AI) interact and collaborate. Gone are the days when AI was viewed as a replacement for human intelligence. Instead, we are witnessing a new era where humans and AI are joining forces, leveraging each other's strengths to achieve remarkable outcomes. This rise of human-AI collaboration is transforming industries and opening up a world of possibilities that were once unimaginable.
+![alt text](image-41.png) In recent years, there has been a significant shift in the way humans and artificial intelligence (AI) interact and collaborate. Gone are the days when AI was viewed as a replacement for human intelligence. Instead, we are witnessing a new era where humans and AI are joining forces, leveraging each other's strengths to achieve remarkable outcomes. This rise of human-AI collaboration is transforming industries and opening up a world of possibilities that were once unimaginable.
 
 One of the key advantages of human-AI collaboration is the ability to break down complex tasks into smaller, more manageable components. AI systems excel at processing large amounts of data and identifying patterns, while humans possess critical thinking and contextual understanding. By combining these capabilities, we can tackle intricate problems that were previously insurmountable.
 
-Take the field of medicine, for example. AI algorithms can analyze vast amounts of medical data, helping doctors make more accurate diagnoses and treatment plans. However, it is the human doctors who possess the expertise to interpret these findings, consider the patient's unique circumstances, and make informed decisions. Together, human doctors and AI systems can provide patients with better healthcare outcomes."
+Take the field of medicine, for example. AI algorithms can analyze vast amounts of medical data, helping doctors make more accurate diagnoses and treatment plans. However, it is the human doctors who possess the expertise to interpret these findings, consider the patient's unique circumstances, and make informed decisions. Together, human doctors and AI systems can provide patients with better healthcare outcomes.
 
 - **Augmented Intelligence:** Emphasis on human-AI collaboration models where AI complements human decision-making and expertise across various domains.
   
 - **AI Education and Literacy:** Efforts to enhance AI literacy, skills development, and ethical understanding among the general population.
-
+<br>
+<br>
 
 ## Conclusion
 
