@@ -1,4 +1,4 @@
-# Generative AI
+# GENERATIVE AI
 
 ## **Table of Contents**
 
@@ -173,11 +173,12 @@
 * [What next in the AI world](#AI_world)
 
 * [Conclusion](#Conclusion)
-
+<br>
 
 ## Introduction
 
 Generative AI represents a groundbreaking advancement in artificial intelligence, characterized by its ability to create new and original content. Unlike traditional AI, which primarily analyzes and processes existing data, generative AI models are designed to produce new data that mimics the patterns and structures found in their training sets. This technology leverages sophisticated algorithms and neural network architectures, such as Generative Adversarial Networks (GANs) and Transformers, to generate text, images, audio, and even video.
+<br>
 <br>
 
 ## Applications
@@ -227,12 +228,12 @@ Generative AI has a wide array of applications across various industries, transf
 
     * **Tutoring Systems:** Generating personalized lesson plans and feedback for students.<br>
     * **Content Creation:** Creating educational materials, including interactive simulations and quizzes.<br>
-
+<br>
 
 ## Generative_Models
 
 Generative models are a class of machine learning models designed to generate new data samples from the same distribution as the training data. They are widely used in various applications such as image synthesis, text generation, and more. Here’s a brief introduction to generative models:
-
+<br>
 
 ## Types
 
@@ -252,7 +253,7 @@ Generative models are a class of machine learning models designed to generate ne
 
     * **Examples:** PixelRNN, PixelCNN, GPT (Generative Pre-trained Transformer).<br>
     * **Function:** Generate data sequentially, where each data point is conditioned on the previous ones. For instance, in text generation, each word is predicted based on the preceding words.<br>
-   
+<br>   
 
 ## Deep_Learning
 
@@ -262,7 +263,8 @@ Deep learning has revolutionized generative modeling by harnessing the power of 
 
 Here's how deep learning fuels generative models, along with some cool examples:<br>
 
-1. **Unveiling the Secrets:** Learning the Data's Language<br>
+1. **Unveiling the Secrets:** Learning the Data's Language.
+
     *  Deep learning excels at analyzing vast amounts of data, like mountains of cat pictures.
 
     *  Through complex neural networks, it uncovers the hidden patterns and relationships within the data.
@@ -283,6 +285,8 @@ Here's how deep learning fuels generative models, along with some cool examples:
 **Example:** The dog image model, having learned dog features, can now generate images of new, never-before-seen dog breeds! Maybe a fluffy Basset with Poodle curls?
 
 ![alt text](image-3.png)
+<br>
+<br>
 
 
 ## GANs
@@ -297,24 +301,27 @@ A generative adversarial network (GAN) has two parts:
 
 ![alt text](image-4.png)
 Both the generator and the discriminator are neural networks. The generator output is connected directly to the discriminator input. Through backpropagation, the discriminator's classification provides a signal that the generator uses to update its weights.
-
+<br>
+<br>
 
 ## VAEs
 
 **Variational AutoEncoder**
 
-Imagine a data compression tool for creativity! VAEs compress data into a latent space, capturing its essence. The model can then decode this compressed version to generate new data samples that hold the same core characteristics.
+Imagine a data compression tool for creativity! VAEs compress data into a latent space, capt/*uring its essence. The model can then decode this compressed version to generate new data samples that hold the same core characteristics.
 
 ![alt text](image-5.png)
 The basic scheme of a variational autoencoder. The model receives x as input. The encoder compresses it into the latent space. The decoder receives as input the information sampled from the latent space and produces x' as similar as possible to x.
-
+<br>
+<br>
 
 ## Autoregressive_models
 
 Autoregressive models are think of them like storytellers. These models predict the next element in a sequence, like the next word in a sentence. By chaining these predictions together, they can generate entirely new sequences that follow the learned patterns.
 
 ![alt text](image-6.png)
-
+<br>
+<br>
 
 ## Transformers
 
@@ -322,11 +329,15 @@ Building large language models using the transformer architecture dramatically i
 
 ![alt text](image-7-1.png) 
 This diagram is called an attention map and can be useful to illustrate the attention weights between each word and every other word. Here in this stylized example, you can see that the word book is strongly connected with or paying attention to the word teacher and the word student.This is called self-attention and the ability to learn a tension in this way across the whole input significantly approves the model's ability to encode language. 
+<br>
+<br>
 
 ## Transformer_Architecture
 
 ![alt text](image-9.png)
 Transformer is a neural network architecture that can process sequential data such as texts, audios, videos, and images(as a sequence of image patches). Transformer does not use any recurrent or convolution layers. It’s fundamental layer is called Attention. It also contain other basic layers such as fully-connected layers, normalization layer,embedding layer, and positional encoding layer.Transformer was initially introduced for machine translation, a task that demands processing two sequences(both input and output are sequences). Thus, the transformer model had two parts: encoder for processing the input and decoder for generating the output. 
+<br>
+<br>
 
 ## Encoder 
 1. Encoder is one of the main blocks of the transformer architecture that is right at the input of input sequence. Encoder transforms input sequence into compressed representation. In the orginal transformer architecture, the encoder was repeated 6 times(this depends on overall size of architecture, it can be changed). Each encoder block has 3 main layers which are multi-head attention(MHA), layer norm, and MLPs(or feedforward according to the paper).
@@ -334,7 +345,8 @@ Transformer is a neural network architecture that can process sequential data su
 2. Multi-head attention and MLPs are referred to as sub-layers in the transformer paper. Between sublayers, there are layer normalization and dropout and residual connections in between(refer to diagram).
 
 3. The number of encoder layers was 6 as said previously. The more the number of encoder layers, the larger the model, and the more the model is likely to capture the global context of the input sequences hence resulting in better task generalization.
-
+<br>
+<br>
 
 ## Decoder
 1. The decoder is pretty much the same as encoder except additional multi-head attention that operated over the output of the encoder. The goal of the decoder is to fuse encoder output with the target sequence and to make predictions(or to predict the next token).
@@ -342,13 +354,16 @@ Transformer is a neural network architecture that can process sequential data su
 2. The attention that takes the target sequence in decoder is masked to prevent the current token(being processed) from attending to subsquent tokens in the target sequence. If the decoder has access to a full target sequence, this would basically be cheating and can result in model that can not generalize beyond the training data.
 
 3. Decoder is also typically repeated the same times as encoder. In the orginal transformer, the number of decoder blocks were also 6 blocks.
+<br>
+<br>
 
 ## Encoder_decoder
 
 ![alt text](imagee1.png)
 
 The transformer architecture is split into two distinct parts, the encoder and the decoder. These components work in conjunction with each other and they share a number of similarities. Also, note here, the diagram you see is derived from the original attention is all you need paper. Notice how the inputs to the model are at the bottom and the outputs are at the top.
-
+<br>
+<br>
 
 ## LLMs
 
@@ -375,7 +390,8 @@ LLMs have a wide range of capabilities, including:
 ![alt text](image-12.png)
 
 4. **Summarization:** LLMs can condense large pieces of text into shorter summaries, capturing the key points.
-
+<br>
+<br>
 
 ## Architecture_of-LLMs
 
@@ -416,7 +432,8 @@ Large language models (LLMs) are impressive feats of engineering, capable of pro
 2. Ability to capture long-range dependencies between words
 
 3. Improved performance on various NLP tasks
-
+<br>
+<br>
 
 ## Text_AI-LLMs
 
@@ -447,9 +464,6 @@ Large language models (LLMs) are impressive feats of engineering, capable of pro
 1. **Developed by:** Google
 
 2. **Focus:** LaMDA is specifically tailored for dialogue applications, aiming to generate more natural and contextually appropriate responses in conversational AI systems.
-
-![alt text](image-15.png)
-Diagram of lambda architecture. Source: http://lambda-architecture.net
 
 3. **Capabilities:** It emphasizes the ability to maintain coherent dialogue and understand nuances in conversation, enhancing user interactions with AI systems like chatbots and virtual assistants.
 
@@ -501,7 +515,8 @@ Diagram of lambda architecture. Source: http://lambda-architecture.net
 ## Falcon LLM
 
 1. **Details:** Information specific to Falcon LLM is not readily available in the current knowledge base. It likely represents another instance of a large language model designed to excel in natural language processing tasks.
-
+<br>
+<br>
 
 ## AI_Models-Services
 
@@ -537,8 +552,9 @@ Multi-label image classification is an extension of the single-label image class
     * **Applications:** Used in creative industries for generating realistic images, artistic styles, and even conditional image generation (e.g., generating images based on text descriptions).
 
 
-![alt text](image-18.png) "A generative model, at its most basic, means that you have mapped the probability distribution of the data itself. In the case of images, this means that there is a chance for every possible combination of pixel values. This also implies that new data points can be generated by sampling from this distribution (i.e. choosing combinations with large probability). If you’re working in computer vision, this means your model can generate new images from scratch. Here’s an example of a generated face." ![Check it out!](https://www.thispersondoesnotexist.com/)
-
+![alt text](image-18.png) A generative model, at its most basic, means that you have mapped the probability distribution of the data itself. In the case of images, this means that there is a chance for every possible combination of pixel values. This also implies that new data points can be generated by sampling from this distribution (i.e. choosing combinations with large probability). If you’re working in computer vision, this means your model can generate new images from scratch. Here’s an example of a generated face. ![Check it out!](https://www.thispersondoesnotexist.com/)
+<br>
+<br>
 
 ## Video-AI_Models 
 
@@ -548,7 +564,7 @@ Multi-label image classification is an extension of the single-label image class
 
     * **Applications:** Creating synthetic video content, video editing automation, and enhancing video production workflows.
 
-    !?[movie](https://x.com/i/status/1742366871146443239)"AI models can create entirely new videos from scratch or modify existing ones. Imagine creating a video explaining a scientific concept."
+    !?[movie](https://x.com/i/status/1742366871146443239) AI models can create entirely new videos from scratch or modify existing ones. Imagine creating a video explaining a scientific concept.
 
 2. **video Editing**
 
@@ -567,8 +583,9 @@ Multi-label image classification is an extension of the single-label image class
 
     * **Hybrid Approaches and Applications:** Combining different models and methods can enhance summarization effectiveness. These AI-powered summaries are widely used in content creation, surveillance, and educational tools to condense long videos into concise, informative highlights.
 
-    ![alt text](image-21.png) "The illustration of the query-conditioned video summarization task. Given a user query, query-conditioned video summarization aims to predict a summary that is relevant to the query in a concise manner. Summary 1 and Summary 2 are two summarization results for the same video but for different user queries."
-
+    ![alt text](image-21.png) The illustration of the query-conditioned video summarization task. Given a user query, query-conditioned video summarization aims to predict a summary that is relevant to the query in a concise manner. Summary 1 and Summary 2 are two summarization results for the same video but for different user queries.
+<br>
+<br>
 
 ## Audio-AI_Models 
 
@@ -598,8 +615,8 @@ Audio AI models are revolutionizing how we interact with and manipulate sound. H
     * **Example Services:** ![alt text](imagee2.png)
 
     * **Example Application:** Security systems can use audio classification to identify the sound of breaking glass or a smoke detector alarm.
-
-
+<br>
+<br>
 
 ## Prompt_Engineering 
 
