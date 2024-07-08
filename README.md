@@ -26,7 +26,7 @@
 
     - [Decoder](#Decoder)
 
-    - [Encoder Decoder](#Encoder_Decoder)
+    - [Vector Embeddings](#Vector_Embeddings)
 
 * [Introduction to Large Language Models](#LLMs)
 
@@ -122,7 +122,7 @@
 
     - [Summarization](#Summarization)
 
-    - [API](#API_Instructions)
+    - [API Instructions](#API_Instructions)
 
 * [Working with Memrory](#Working_with-Memory)
 
@@ -168,7 +168,7 @@
 
 * [Perform Fine tuning of a LLM using PEFT](#Fine_tuning(PEFT))
 
-* [Small Language Models](#small_LMs)
+* [Small Language Models](#Small_LMs)
 
 * [What next in the AI world](#AI_world)
 
@@ -178,13 +178,17 @@
 
 ## Introduction
 
-Generative AI represents a groundbreaking advancement in artificial intelligence, characterized by its ability to create new and original content. Unlike traditional AI, which primarily analyzes and processes existing data, generative AI models are designed to produce new data that mimics the patterns and structures found in their training sets. This technology leverages sophisticated algorithms and neural network architectures, such as Generative Adversarial Networks (GANs) and Transformers, to generate text, images, audio, and even video.
+![alt text](image-43.png) Generative AI represents a groundbreaking advancement in artificial intelligence, characterized by its ability to create new and original content. Unlike traditional AI, which primarily analyzes and processes existing data, generative AI models are designed to produce new data that mimics the patterns and structures found in their training sets. This technology leverages sophisticated algorithms and neural network architectures, such as Generative Adversarial Networks (GANs) and Transformers, to generate text, images, audio, and even video.
 <br>
 <br>
 
 ## Applications
 
 Generative AI has a wide array of applications across various industries, transforming how we create and interact with content. Here are some notable applications:
+
+![alt text](image-44.png)
+
+Image Source : https://redblink.com/generative-ai-applications-use-cases/
 
 1. **Text Generation**<br>
 
@@ -360,42 +364,48 @@ Transformer is a neural network architecture that can process sequential data su
 <br>
 <br>
 
-## Encoder_decoder
+## Vector_Embeddings
 
 ![alt text](imagee1.png)
 
 The transformer architecture is split into two distinct parts, the encoder and the decoder. These components work in conjunction with each other and they share a number of similarities. Also, note here, the diagram you see is derived from the original attention is all you need paper. Notice how the inputs to the model are at the bottom and the outputs are at the top.
+<br>
 
 ![alt text](A.png)
 
 In essence, this process transforms words into numbers, where each number corresponds to a specific position in a dictionary containing all the potential words the model can handle. There are various tokenization methods available. For instance, some token IDs may represent two entire words.
+<br>
 
 ![alt text](B.png)
 
 Once your input is converted into numbers, it can be fed into the embedding layer. This layer is a trainable vector embedding space, a high-dimensional area where each token is represented by a vector and occupies a unique position within that space. Every token ID in the vocabulary is associated with a multi-dimensional vector. 
+<br>
 
 ![alt text](G.png)
 
 The idea is that these vectors learn to capture the meaning and context of individual tokens in the input sequence. Referring back to the example sequence, you can observe that each word has been assigned a token ID, and each token is translated into a vector. In the original transformer paper, the vector size was actually 512, which is too large to fit into this image.
+<br>
 
 ![alt text](C.png)
 
 When you integrate token vectors into the encoder or decoder base, you also incorporate positional encoding. The model processes all input tokens in parallel. By including positional encoding, you preserve the word order information, ensuring the positional relevance of words within the sentence is maintained. Once the input tokens and positional encodings are combined, the resulting vectors are passed to the self-attention layer.
+<br>
 
 ![alt text](D.png)
 
 In this stage, the model examines the relationships between tokens in your input sequence. As previously discussed, this enables the model to focus on different parts of the input sequence, effectively capturing the contextual dependencies between words. The self-attention weights, learned during training and stored in these layers, indicate the significance of each word in the input sequence relative to all other words.
 
 However, this process occurs multiple times through the transformer's multi-headed self-attention mechanism. This means that several sets of self-attention weights, or heads, are learned in parallel, each independently from the others. The number of attention heads in the attention layer varies depending on the model, typically ranging from 12 to 100. The idea is that each self-attention head will learn to recognize different aspects of the language.
+<br>
 
 ![alt text](E.png)
 
 For instance, one head might identify relationships between the people entities in a sentence, while another head might focus on the activities described. Yet another head could concentrate on different properties, such as whether the words rhyme. It's important to understand that you don't predetermine which aspects of language each attention head will learn. The weights for each head start with random initialization, and with enough training data and time, each head will learn different language aspects. While some attention maps are straightforward to interpret, like the examples given here, others might be more complex.
+<br>
 
 ![alt text](F.png)
 
 After all the attention weights have been applied to your input data, the output is processed through a fully-connected feed-forward network. This layer's output is a vector of logits, with each value representing a proportional probability score for every token in the tokenizer dictionary. These logits can then be passed to a final softmax layer, where they are normalized into probability scores for each word. The output includes a probability for every word in the vocabulary, which means there will likely be thousands of scores. One token will have a higher score than the rest, indicating it is the most likely predicted token. However, as you'll learn later in the course, there are various methods to modify the final selection from this vector of probabilities.
-
 <br>
 <br>
 
@@ -407,6 +417,7 @@ Large Language Models (LLMs) represent a cutting-edge advancement in generative 
 Imagine a computer program that has been trained on a massive amount of text data – like the entire internet! This data includes books, articles, code, and all sorts of online content. LLMs use this knowledge to understand the patterns and nuances of language.
 
 ![alt text](image-10.png)
+<br>
 
 **How do LLMs Work?**
 
@@ -420,9 +431,11 @@ LLMs have a wide range of capabilities, including:
 
 2. **Machine Translation:** LLMs can translate languages more accurately and naturally, considering context and sentence structure.
 ![alt text](image-11.png)
+<br>
 
 3. **Question Answering:** LLMs can answer your questions in an informative way, drawing on their vast knowledge base.
 ![alt text](image-12.png)
+<br>
 
 4. **Summarization:** LLMs can condense large pieces of text into shorter summaries, capturing the key points.
 <br>
@@ -450,6 +463,7 @@ Large language models (LLMs) are impressive feats of engineering, capable of pro
 **Here's a diagram illustrating the LLM architecture:**
 
 ![alt text](image-13.png)
+<br>
 
 **Understanding the Transformer:**
 
@@ -479,6 +493,7 @@ Large language models (LLMs) are impressive feats of engineering, capable of pro
 2. **Parameters:** GPT-3 is known for its massive scale with 175 billion parameters, enabling it to handle a wide range of natural language processing tasks.
 
 ![alt text](image-14.png)
+<br>
 
 3. **Capabilities:** It excels in tasks such as text generation, translation, summarization, question answering, and more. GPT-3 operates based on autoregressive language modeling, predicting the next word in a sequence given the previous ones.
 
@@ -521,6 +536,7 @@ Large language models (LLMs) are impressive feats of engineering, capable of pro
 2. **Focus:** Alpaca is designed to generate coherent and contextually appropriate text across a variety of natural language processing tasks.
 
 ![alt text](image-16.png)
+<br>
 
 3. **Applications:** It is used in applications requiring natural language understanding and generation, potentially spanning tasks from chatbots to automated content generation.
 
@@ -534,6 +550,7 @@ Large language models (LLMs) are impressive feats of engineering, capable of pro
 2. **Key Feature:** FLAN is optimized for few-shot learning, enabling it to adapt quickly to new tasks or domains with minimal training data.
 
 ![alt text](image-17.png)
+<br>
 
 3. **Applications:** Useful in scenarios where rapid adaptation to new tasks or environments is required, such as personalized AI assistants or specialized language processing tasks.
 
@@ -556,6 +573,8 @@ Large language models (LLMs) are impressive feats of engineering, capable of pro
 ## AI_Models-Services
 
 The world of AI extends far beyond text, venturing into the creative domains of image, video, and audio. Here's a glimpse into some exciting AI models and services pushing the boundaries in these areas, along with visuals to help you understand.
+<br>
+<br>
 
 ## Image-AI_Models
 
@@ -568,9 +587,9 @@ The world of AI extends far beyond text, venturing into the creative domains of 
 
 **Single-label vs. multi-label classification**
 
-![alt text](image-19.png) "Single-label image classification is a traditional image classification problem where each image is associated with only one label or class. For instance, an image of a cat can be labeled as “cat” and nothing else. The task of the classifier is to predict the label for a given image.
+![alt text](image-19.png) Single-label image classification is a traditional image classification problem where each image is associated with only one label or class. For instance, an image of a cat can be labeled as “cat” and nothing else. The task of the classifier is to predict the label for a given image.
 
-Multi-label image classification is an extension of the single-label image classification problem, where an image can have multiple labels or classes associated with it. For example, an image of a cat playing in a park can be labeled as “cat” and “park”. The task of the classifier, in this case, is to predict all the relevant labels or classes for a given image."
+Multi-label image classification is an extension of the single-label image classification problem, where an image can have multiple labels or classes associated with it. For example, an image of a cat playing in a park can be labeled as “cat” and “park”. The task of the classifier, in this case, is to predict all the relevant labels or classes for a given image.
 
 
 2. **Object Detection**
@@ -648,6 +667,7 @@ Audio AI models are revolutionizing how we interact with and manipulate sound. H
     * **Concept:** AI can analyze and identify different sounds within an audio recording. Imagine automatically classifying animal calls in a forest recording or recognizing musical instruments playing in a song.
 
     * **Example Services:** ![alt text](imagee2.png)
+    <br>
 
     * **Example Application:** Security systems can use audio classification to identify the sound of breaking glass or a smoke detector alarm.
 <br>
@@ -661,13 +681,13 @@ Prompt engineering is the art of crafting clear and effective instructions for L
 
 Imagine giving vague instructions to a friend. The results might be unpredictable. Similarly, LLMs need precise prompts to understand your intent and deliver exceptional outputs. Prompt engineering helps you:
 
-* Fine-tune outputs: Tailor the AI's response to a specific style, format, or topic.
+* **Fine-tune outputs:** Tailor the AI's response to a specific style, format, or topic.
 
-* Reduce ambiguity: Clear prompts minimize the chance of nonsensical or irrelevant outputs.
+* **Reduce ambiguity:** Clear prompts minimize the chance of nonsensical or irrelevant outputs.
 
-* Unlock creativity: Crafting prompts with specific details or scenarios can inspire the AI to generate creative text formats like poems or scripts.
+* **Unlock creativity:** Crafting prompts with specific details or scenarios can inspire the AI to generate creative text formats like poems or scripts.
 
-* Improve factual accuracy: By providing factual context within the prompt, you can guide the AI towards generating more accurate and reliable responses.
+* **Improve factual accuracy:** By providing factual context within the prompt, you can guide the AI towards generating more accurate and reliable responses.
 <br>
 
 **Key Strategies for Effective Prompt Engineering**
@@ -691,13 +711,13 @@ ChatGPT is an advanced conversational AI developed by OpenAI, designed to unders
 
 **Here's a glimpse into what ChatGPT can do**
 
-* Answer your questions in an informative way: Stuck on a question? ChatGPT can access and process vast amounts of information to provide insightful answers.
+* **Answer your questions in an informative way:** Stuck on a question? ChatGPT can access and process vast amounts of information to provide insightful answers.
 
-* Engage in casual conversation: Feeling chatty? ChatGPT can hold engaging conversations on various topics, adapting its style and tone to match yours.
+* **Engage in casual conversation:** Feeling chatty? ChatGPT can hold engaging conversations on various topics, adapting its style and tone to match yours.
 
-* Generate different creative text formats: Need a poem for a special occasion or a script for a short play? ChatGPT can generate creative text formats based on your prompts and instructions.
+* **Generate different creative text formats:** Need a poem for a special occasion or a script for a short play? ChatGPT can generate creative text formats based on your prompts and instructions.
 
-* Translate languages: Traveling the world or need to understand a foreign text? ChatGPT can translate languages, bridging communication gaps.
+* **Translate languages:** Traveling the world or need to understand a foreign text? ChatGPT can translate languages, bridging communication gaps.
 <br>
 
 **Understanding How ChatGPT Works**
@@ -970,6 +990,7 @@ Defining constraints in the context of machine learning and natural language pro
 Zero-shot prompting refers to the technique of designing prompts in such a way that an AI model can perform a task without having been explicitly trained on specific examples of that task. Instead, the model relies on its general understanding and knowledge derived from its training data to generate appropriate responses. This is particularly useful when you need the model to handle tasks for which no specific training examples are available.
 
 ![alt text](imagee6.png) With in-context learning, you can help LLMs learn more about the task being asked by including examples or additional data in the prompt. Here is a concrete example. Within the prompt shown here, you ask the model to classify the sentiment of a review. So whether the review of this movie is positive or negative, the prompt consists of the instruction, "Classify this review," followed by some context, which in this case is the review text itself, and an instruction to produce the sentiment at the end. This method, including your input data within the prompt, is called zero-shot inference. The largest of the LLMs are surprisingly good at this, grasping the task to be completed and returning a good answer. In this example, the model correctly identifies the sentiment as positive.
+<br>
 
 ![alt text](imagee4.png) Smaller models, on the other hand, can struggle with this. Here's an example of a completion generated by GPT-2, an earlier smaller version of the model that powers ChatGPT. As you can see, the model doesn't follow the instruction. While it does generate text with some relation to the prompt, the model can't figure out the details of the task and does not identify the sentiment.
 <br>
@@ -980,6 +1001,7 @@ Zero-shot prompting refers to the technique of designing prompts in such a way t
 Few-shot prompting is a technique used with AI models like ChatGPT to perform tasks with minimal examples or shots of training data. Unlike zero-shot prompting, which requires the model to generalize from its training data without specific examples, few-shot prompting involves providing a small number of examples (shots) to guide the model in understanding and generating responses for a particular task or domain.
 
 ![alt text](imagee9.png) Here you can see that the prompt text is longer and now starts with a completed example that demonstrates the tasks to be carried out to the model. After specifying that the model should classify the review, the prompt text includes a sample review. I loved this movie, followed by a completed sentiment analysis. In this case, the review is positive. Next, the prompt states the instruction again and includes the actual input review that we want the model to analyze. You pass this new longer prompt to the smaller model, which now has a better chance of understanding the task you're specifying and the format of the response that you want. The inclusion of a single example is known as one-shot inference, in contrast to the zero-shot prompt you supplied earlier.
+<br>
 
 ![alt text](imagee7.png) "Sometimes a single example won't be enough for the model to learn what you want it to do. So you can extend the idea of giving a single example to include multiple examples. This is known as few-shot inference. Here, you're working with an even smaller model that failed to carry out good sentiment analysis with one-shot inference. Instead, you're going to try few-shot inference by including a second example. This time, a negative review, including a mix of examples with different output classes can help the model to understand what it needs to do. You pass the new prompts to the model. And this time it understands the instruction and generates a completion that correctly identifies the sentiment of the review as negative.
 <br>
@@ -1244,30 +1266,29 @@ In the LangChain framework, a link accepts input from the user and passes it to 
 
 To use LangChain, developers install the framework in Python with the following command:
 
-'''python
+To install the `langchain` package using a bash command in a Jupyter Notebook or Google Colab environment, you can use the `!pip install` command directly in a code cell. Here's how you would do it:
+
+```bash
 !pip install langchain
-'''
+```
 
 Developers then use the chain building blocks or LangChain Expression Language (LCEL) to compose chains with simple programming commands. The chain() function passes a link's arguments to the libraries. The execute() command retrieves the results. Developers can pass the current link result to the following link or return it as the final output. 
 
 Below is an example of a chatbot chain function that returns product details in multiple languages.
 
-'''python
+```python
 chain([
-
-retrieve_data_from_product_database()
-
-send_data_to_language_model()
-
-   format_output_in_a_list()
-
-  translate_output_in_target_language()
-
+    retrieve_data_from_product_database(),
+    send_data_to_language_model(),
+    format_output_in_a_list(),
+    translate_output_in_target_language()
 ])
-'''
+```
+<br>
 
 ![alt text](image-27.png)
 
+<br>
 
 **Here are some potential applications of LangChain**
 
@@ -1317,6 +1338,7 @@ Here's an overview of the key components in the LangChain ecosystem:
 <br>
 
 ![alt text](image-29.png)
+<br>
 
 It visually depicts the various components and their interactions. Here’s a breakdown of the key elements:
 
@@ -1510,6 +1532,7 @@ By following these steps, you should be able to get started with LangChain on Go
 ## Prompt_Composition-Templates
 
 Prompt composition and the use of templates are key aspects of working with language models effectively. They help structure the input given to the models, ensuring more consistent and contextually appropriate responses. LangChain provides tools to facilitate prompt composition and templating.
+<br>
 
 ## Prompt_Composition
 
