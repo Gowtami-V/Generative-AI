@@ -258,7 +258,6 @@ Generative models are a class of machine learning models designed to generate ne
 
     * **Function:** Generate data sequentially, where each data point is conditioned on the previous ones. For instance, in text generation, each word is predicted based on the preceding words.
 <br>
-<br>   
 
 ## Deep_Learning
 
@@ -292,7 +291,6 @@ Here's how deep learning fuels generative models, along with some cool examples:
 ![alt text](image-3.png)
 <br>
 <br>
-
 
 ## GANs
 
