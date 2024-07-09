@@ -3333,7 +3333,7 @@ Understanding model metrics like accuracy and other benchmarks is crucial in eva
 
    - **Precision**: Precision measures the accuracy of positive predictions. It is the ratio of correctly predicted positive observations to the total predicted positives.
 
-    Precision = True Positives / (True Positives + False Positives)
+     Precision = True Positives / (True Positives + False Positives)
 
 
    - **Recall**: Recall, or sensitivity, measures the ability of the model to correctly identify positive instances.
