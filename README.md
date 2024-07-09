@@ -3301,29 +3301,44 @@ Understanding model metrics like accuracy and other benchmarks is crucial in eva
 1. **Accuracy**: Accuracy is a basic metric that measures the percentage of correctly predicted instances out of the total instances. It's calculated as:
 
    \[
+
    \text{Accuracy} = \frac{\text{Number of correct predictions}}{\text{Total number of predictions}}
+   
    \]
+
    While simple to understand, accuracy may not be the best metric for imbalanced datasets where one class dominates the others.
+
 <br>
+
 
 2. **Precision and Recall**:
 
    - **Precision**: Precision measures the accuracy of positive predictions. It is the ratio of correctly predicted positive observations to the total predicted positives.
 
-     \[
-     \text{Precision} = \frac{\text{True Positives}}{\text{True Positives + False Positives}}
-     \]
+    \[ 
+
+    \text{Precision} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}} 
+
+    \]
+
+
    - **Recall**: Recall, or sensitivity, measures the ability of the model to correctly identify positive instances.
+
      \[
+
      \text{Recall} = \frac{\text{True Positives}}{\text{True Positives + False Negatives}}
+     
      \]
+   
    Precision and recall are especially useful when the cost of false positives and false negatives differs.
 <br>
 
 3. **F1 Score**: The F1 score is the harmonic mean of precision and recall, providing a balance between the two metrics. It is calculated as:
 
    \[
+
    F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
+   
    \]
 
 <br>
