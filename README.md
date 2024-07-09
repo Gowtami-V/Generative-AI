@@ -3335,7 +3335,6 @@ Understanding model metrics like accuracy and other benchmarks is crucial in eva
 
     Precision = True Positives / (True Positives + False Positives)
 
-    
 
    - **Recall**: Recall, or sensitivity, measures the ability of the model to correctly identify positive instances.
 
@@ -3350,7 +3349,6 @@ Understanding model metrics like accuracy and other benchmarks is crucial in eva
 
    F1 = (2 * Precision *Recall) / (Precision + Recall)
    
-
 <br>
 
 4. **Confusion Matrix**: A confusion matrix provides a detailed breakdown of predictions by comparing predicted and actual classes. It helps visualize where the model is making errors.
