@@ -3347,7 +3347,7 @@ Understanding model metrics like accuracy and other benchmarks is crucial in eva
 3. **F1 Score**: The F1 score is the harmonic mean of precision and recall, providing a balance between the two metrics. It is calculated as:
 
 
-   F1 = (2 * Precision *Recall) / (Precision + Recall)
+   F1 = (2 * Precision * Recall) / (Precision + Recall)
    
 <br>
 
