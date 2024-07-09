@@ -416,7 +416,8 @@ Large Language Models (LLMs) represent a cutting-edge advancement in generative 
 
 Imagine a computer program that has been trained on a massive amount of text data – like the entire internet! This data includes books, articles, code, and all sorts of online content. LLMs use this knowledge to understand the patterns and nuances of language.
 
-![alt text](image-10.png)
+![alt text](image-46.png)
+Source: https://www.appypie.com/blog/architecture-and-components-of-llms
 <br>
 
 **How do LLMs Work?**
@@ -462,7 +463,7 @@ Large language models (LLMs) are impressive feats of engineering, capable of pro
 
 **Here's a diagram illustrating the LLM architecture:**
 
-![alt text](image-13.png)
+![alt text](image-45.png)
 <br>
 
 **Understanding the Transformer:**
@@ -535,7 +536,8 @@ Large language models (LLMs) are impressive feats of engineering, capable of pro
 
 2. **Focus:** Alpaca is designed to generate coherent and contextually appropriate text across a variety of natural language processing tasks.
 
-![alt text](image-16.png)
+![alt text](image-47.png)
+Source: https://crfm.stanford.edu/2023/03/13/alpaca.html
 <br>
 
 3. **Applications:** It is used in applications requiring natural language understanding and generation, potentially spanning tasks from chatbots to automated content generation.
@@ -549,7 +551,8 @@ Large language models (LLMs) are impressive feats of engineering, capable of pro
 
 2. **Key Feature:** FLAN is optimized for few-shot learning, enabling it to adapt quickly to new tasks or domains with minimal training data.
 
-![alt text](image-17.png)
+![alt text](image-48.png)
+Source: https://www.marktechpost.com/2021/10/08/google-ai-introduces-flan-an-instruction-tuned-generalizable-language-nlp-model-to-perform-zero-shot-tasks/
 <br>
 
 3. **Applications:** Useful in scenarios where rapid adaptation to new tasks or environments is required, such as personalized AI assistants or specialized language processing tasks.
@@ -587,7 +590,8 @@ The world of AI extends far beyond text, venturing into the creative domains of 
 
 **Single-label vs. multi-label classification**
 
-![alt text](image-19.png) Single-label image classification is a traditional image classification problem where each image is associated with only one label or class. For instance, an image of a cat can be labeled as “cat” and nothing else. The task of the classifier is to predict the label for a given image.
+![alt text](image-19.png) 
+Single-label image classification is a traditional image classification problem where each image is associated with only one label or class. For instance, an image of a cat can be labeled as “cat” and nothing else. The task of the classifier is to predict the label for a given image.
 
 Multi-label image classification is an extension of the single-label image classification problem, where an image can have multiple labels or classes associated with it. For example, an image of a cat playing in a park can be labeled as “cat” and “park”. The task of the classifier, in this case, is to predict all the relevant labels or classes for a given image.
 
@@ -794,6 +798,8 @@ Don't be afraid to experiment and refine your prompts. Test different approaches
 
 Avoiding prompt injections in large language models (LLMs) is crucial for maintaining the security and integrity of the interaction. Prompt injection attacks occur when an attacker manipulates the input prompts to influence the behavior of the model in an unintended way. Using delimiters effectively can help mitigate such risks. Here are some strategies to avoid prompt injections using delimiters:
 
+Example(Colab link): https://colab.research.google.com/drive/1dW-4bQuLsehAnMET7U4_rnJ_x2U9ONW8?usp=sharing
+
 1. **Clear Delimiters for User Input and System Instructions**
 
 Use clear and distinct delimiters to separate user input from system instructions. This helps the model distinguish between what is user-provided content and what are system directives.
@@ -989,6 +995,8 @@ Defining constraints in the context of machine learning and natural language pro
 
 Zero-shot prompting refers to the technique of designing prompts in such a way that an AI model can perform a task without having been explicitly trained on specific examples of that task. Instead, the model relies on its general understanding and knowledge derived from its training data to generate appropriate responses. This is particularly useful when you need the model to handle tasks for which no specific training examples are available.
 
+Example(Colab link): https://colab.research.google.com/drive/1tZBEP_Ss8FpTHUsj2MsxarMRorBpwjEH?usp=sharing
+
 ![alt text](imagee6.png) With in-context learning, you can help LLMs learn more about the task being asked by including examples or additional data in the prompt. Here is a concrete example. Within the prompt shown here, you ask the model to classify the sentiment of a review. So whether the review of this movie is positive or negative, the prompt consists of the instruction, "Classify this review," followed by some context, which in this case is the review text itself, and an instruction to produce the sentiment at the end. This method, including your input data within the prompt, is called zero-shot inference. The largest of the LLMs are surprisingly good at this, grasping the task to be completed and returning a good answer. In this example, the model correctly identifies the sentiment as positive.
 <br>
 
@@ -999,6 +1007,8 @@ Zero-shot prompting refers to the technique of designing prompts in such a way t
 ## Few-shot_Prompting
 
 Few-shot prompting is a technique used with AI models like ChatGPT to perform tasks with minimal examples or shots of training data. Unlike zero-shot prompting, which requires the model to generalize from its training data without specific examples, few-shot prompting involves providing a small number of examples (shots) to guide the model in understanding and generating responses for a particular task or domain.
+
+**Example(Colab link):** https://colab.research.google.com/drive/1dxPDHuEBMDvhV4uElZuZzC6D6mKsrx9t?usp=sharing
 
 ![alt text](imagee9.png) Here you can see that the prompt text is longer and now starts with a completed example that demonstrates the tasks to be carried out to the model. After specifying that the model should classify the review, the prompt text includes a sample review. I loved this movie, followed by a completed sentiment analysis. In this case, the review is positive. Next, the prompt states the instruction again and includes the actual input review that we want the model to analyze. You pass this new longer prompt to the smaller model, which now has a better chance of understanding the task you're specifying and the format of the response that you want. The inclusion of a single example is known as one-shot inference, in contrast to the zero-shot prompt you supplied earlier.
 <br>
@@ -1428,6 +1438,8 @@ LangChain supports a variety of large language models (LLMs) to cater to differe
 **Getting Started with LangChain on Google Colab**
 
 Getting started with LangChain on Google Colab is a straightforward process. Below are the steps to set up and run a basic LangChain application on Google Colab.
+
+Example(Colab link): https://colab.research.google.com/drive/1zliCqgdUJ9lhWtyqQ2FqWknJLqIKbVTO?usp=sharing
 
 **Step 1: Open Google Colab**
 
@@ -2665,6 +2677,8 @@ Working with text splitters and chunking data is an essential step when dealing 
 3. **Context Preservation**: Splitting text into logical chunks helps maintain context, which is crucial for accurate analysis.
 <br>
 
+**Example(Colab link):** https://colab.research.google.com/drive/1uxnHstULl40ykF3FO1AB-WLOgBtjvWul?usp=sharing
+
 **Steps**
 
 **Step 1: Install Dependencies**
@@ -3119,6 +3133,8 @@ for i, result in enumerate(search_results):
 
 ## Clustering
 
+**Example(Colab link):** https://colab.research.google.com/drive/1BIcFtXTu3fgQq__6lEIlQO0dcFjBBeyf?usp=sharing
+
 You can use the document embeddings for clustering similar documents together. For example, using KMeans clustering:
 
 ```python
@@ -3141,6 +3157,8 @@ for i in range(num_clusters):
 <br>
 
 ## Text Classification
+
+**Example(Colab link):** https://colab.research.google.com/drive/1xDNlfsZssfSsRYp7P9x5onAs6FwDdUox?usp=sharing
 
 Use embeddings as features for a machine learning model to classify text data:
 
@@ -3292,7 +3310,7 @@ Choosing the right Language Model (LM) from the Hugging Face Model Hub involves 
 <br>
 
 
-## Evaluation_Matrics
+## Evaluation_Metrics
 
 **Understanding the Model Metrics, Accuracy and other Benchmarks**
 
@@ -3300,11 +3318,11 @@ Understanding model metrics like accuracy and other benchmarks is crucial in eva
 
 1. **Accuracy**: Accuracy is a basic metric that measures the percentage of correctly predicted instances out of the total instances. It's calculated as:
 
-   \[
-
-   \text{Accuracy} = \frac{\text{Number of correct predictions}}{\text{Total number of predictions}}
    
-   \]
+
+   Accuracy = Number of correct predictions / Total number of predictions
+
+   
 
    While simple to understand, accuracy may not be the best metric for imbalanced datasets where one class dominates the others.
 
@@ -3315,31 +3333,23 @@ Understanding model metrics like accuracy and other benchmarks is crucial in eva
 
    - **Precision**: Precision measures the accuracy of positive predictions. It is the ratio of correctly predicted positive observations to the total predicted positives.
 
-    \[ 
+    Precision = True Positives / (True Positives + False Positives)
 
-    \text{Precision} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}} 
-
-    \]
-
+    
 
    - **Recall**: Recall, or sensitivity, measures the ability of the model to correctly identify positive instances.
 
-     \[
-
-     \text{Recall} = \frac{\text{True Positives}}{\text{True Positives + False Negatives}}
+     Recall = (True Positives) /(True Positives + False Negatives)
      
-     \]
-   
+
    Precision and recall are especially useful when the cost of false positives and false negatives differs.
 <br>
 
 3. **F1 Score**: The F1 score is the harmonic mean of precision and recall, providing a balance between the two metrics. It is calculated as:
 
-   \[
 
-   F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
+   F1 = (2 * Precision *Recall) / (Precision + Recall)
    
-   \]
 
 <br>
 
